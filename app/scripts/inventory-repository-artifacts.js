@@ -81,7 +81,7 @@ for (const entry of entries) {
   classCounts[name] = (classCounts[name] || 0) + 1;
 }
 
-const visualBaselines = untracked.filter(file => /^app\/\.q-visual-baseline\/.*\.png$/.test(file));
+const visualBaselines = tracked.filter(file => /^app\/\.q-visual-baseline\/.*\.png$/.test(file));
 const required = [
   'app/packages/tend-ui-assets/src/media/demo-avatar.svg',
   'app/packages/tend-ui-assets/src/stats.html',
