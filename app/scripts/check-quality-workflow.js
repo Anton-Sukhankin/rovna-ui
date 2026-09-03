@@ -111,6 +111,17 @@ function main() {
     browserRuns.split('\n').filter(Boolean),
   );
   check(
+    'browser-storybook-build-wrapper',
+    jobSteps('browser-quality').some(
+      step =>
+        step.name === 'Build static Storybook' &&
+        step.run === 'npm run storybook:local:build',
+    ),
+    jobSteps('browser-quality')
+      .filter(step => step.name === 'Build static Storybook')
+      .map(step => step.run),
+  );
+  check(
     'browser-artifacts',
     [
       'q01-browser-runner.json',

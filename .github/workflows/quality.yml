@@ -162,7 +162,7 @@ jobs:
         run: npx --no-install playwright install --with-deps chromium firefox webkit
 
       - name: Build static Storybook
-        run: npm run build:storybook
+        run: npm run storybook:local:build
 
       - name: Run full Chromium story suite
         run: npm run test:storybook:ci
