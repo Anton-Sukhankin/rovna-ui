@@ -12,7 +12,7 @@ const webpackExampleRoot = path.join(repoRoot, 'examples', 'consumer-webpack');
 const outputRoot = path.join(repoRoot, 'tmp', 'r06-bundler-consumers');
 const reportPath = path.join(repoRoot, 'docs', 'r06-bundler-compatibility.json');
 const releaseArchivePath = path.join(repoRoot, 'release', 'rovna-ui-4.82.0-release-bundle.tgz');
-const yarnRuntime = path.join(
+const cachedYarnRuntimePath = path.join(
   process.env.LOCALAPPDATA || '',
   'node',
   'corepack',
@@ -46,6 +46,14 @@ function run(command, args, cwd, timeout = 300000) {
     durationMs: Date.now() - startedAt,
     output: `${result.stdout || ''}${result.stderr || ''}`,
   };
+}
+
+function runYarn(args, cwd, timeout = 300000) {
+  if (fs.existsSync(cachedYarnRuntimePath)) {
+    return run(process.execPath, [cachedYarnRuntimePath, ...args], cwd, timeout);
+  }
+
+  return run(process.platform === 'win32' ? 'yarn.cmd' : 'yarn', args, cwd, timeout);
 }
 
 async function verifyBundle(bundlePath) {
@@ -138,9 +146,9 @@ async function main() {
   if (!fs.existsSync(releaseArchivePath)) throw new Error('Release archive is missing.');
   fs.mkdirSync(outputRoot, { recursive: true });
 
-  const viteBuild = run(process.execPath, [yarnRuntime, 'build'], reactConsumerRoot, 300000);
+  const viteBuild = runYarn(['build'], reactConsumerRoot, 300000);
   const viteDom = viteBuild.status === 'passed'
-    ? run(process.execPath, [yarnRuntime, 'verify'], reactConsumerRoot, 120000)
+    ? runYarn(['verify'], reactConsumerRoot, 120000)
     : { status: 'failed', exitCode: null, durationMs: 0, output: 'Build failed.' };
   fs.writeFileSync(path.join(outputRoot, 'vite.log'), `${viteBuild.output}\n${viteDom.output}`);
 

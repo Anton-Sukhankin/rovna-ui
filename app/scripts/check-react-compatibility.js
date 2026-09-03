@@ -12,7 +12,7 @@ const runId = new Date().toISOString().replace(/[:.]/g, '-');
 const outputRoot = path.join(repoRoot, 'tmp', 'h08-react-compatibility-runs', runId);
 const reportPath = path.join(repoRoot, 'docs', 'react-compatibility.json');
 const releaseArchivePath = path.join(repoRoot, 'release', 'rovna-ui-4.82.0-release-bundle.tgz');
-const yarnRuntime = path.join(
+const cachedYarnRuntimePath = path.join(
   process.env.LOCALAPPDATA || '',
   'node',
   'corepack',
@@ -41,8 +41,16 @@ function toPosix(value) {
   return value.replace(/\\/g, '/');
 }
 
-function run(args, cwd, timeout = 300000) {
-  return spawnSync(process.execPath, args, {
+function runYarn(args, cwd, timeout = 300000) {
+  const hasCachedRuntime = fs.existsSync(cachedYarnRuntimePath);
+  const command = hasCachedRuntime
+    ? process.execPath
+    : process.platform === 'win32'
+      ? 'yarn.cmd'
+      : 'yarn';
+  const commandArgs = hasCachedRuntime ? [cachedYarnRuntimePath, ...args] : args;
+
+  return spawnSync(command, commandArgs, {
     cwd,
     encoding: 'utf8',
     timeout,
@@ -102,7 +110,12 @@ ${renderCall}
 }
 
 function main() {
-  if (!fs.existsSync(yarnRuntime)) throw new Error(`Missing Yarn runtime: ${yarnRuntime}`);
+  const yarnVersion = runYarn(['--version'], appRoot, 120000);
+  if (yarnVersion.status !== 0) {
+    throw new Error(
+      `Yarn 1 runtime is unavailable: ${yarnVersion.error?.message || yarnVersion.stderr || yarnVersion.status}`,
+    );
+  }
   if (!fs.existsSync(releaseArchivePath)) {
     throw new Error(`Missing release archive: ${releaseArchivePath}`);
   }
@@ -171,9 +184,8 @@ function main() {
       `${JSON.stringify(packageJson, null, 2)}\n`,
     );
 
-    const install = run(
+    const install = runYarn(
       [
-        yarnRuntime,
         'install',
         '--ignore-scripts',
         '--ignore-engines',
@@ -195,8 +207,8 @@ function main() {
     let build = { status: null, stdout: '', stderr: '' };
     let verify = { status: null, stdout: '', stderr: '' };
     if (install.status === 0) {
-      build = run([yarnRuntime, 'build'], consumerRoot, 300000);
-      if (build.status === 0) verify = run([yarnRuntime, 'verify'], consumerRoot, 120000);
+      build = runYarn(['build'], consumerRoot, 300000);
+      if (build.status === 0) verify = runYarn(['verify'], consumerRoot, 120000);
     }
     fs.writeFileSync(
       path.join(consumerRoot, 'build.log'),
