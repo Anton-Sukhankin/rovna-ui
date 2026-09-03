@@ -178,7 +178,9 @@ async function main() {
     tarballResult?.consumer?.domSmoke === 'passed';
   consumers.push({
     id: 'consumer-tarball',
-    route: 'isolated-registry-free-tarballs',
+    route: tarballResult?.publicDependencyRegistryContacted
+      ? 'isolated-local-tarballs-public-dependencies'
+      : 'isolated-registry-free-tarballs',
     status: tarballPassed ? 'passed' : 'failed',
     execution: {
       exitCode: tarballRun.status,
@@ -192,15 +194,20 @@ async function main() {
     build: tarballResult?.consumer?.build || null,
     domSmoke: tarballResult?.consumer?.domSmoke || null,
     releaseTarballs: tarballResult?.packedTarballs?.length ?? null,
-    registryContacted: false,
+    registryContacted: tarballResult?.publicDependencyRegistryContacted === true,
   });
 
   const failures = consumers.filter(consumer => consumer.status !== 'passed');
+  const publicDependencyRegistryContacted = consumers.some(
+    consumer => consumer.registryContacted === true,
+  );
   const report = {
     status: failures.length ? 'failed' : 'passed',
-    mode: 'ds-only-offline-consumers',
+    mode: publicDependencyRegistryContacted
+      ? 'ds-only-local-packages-public-dependencies'
+      : 'ds-only-offline-consumers',
     checkedAt: new Date().toISOString(),
-    networkInstallAllowed: false,
+    networkInstallAllowed: publicDependencyRegistryContacted,
     closedCorporateSourceUsed: false,
     externalProjectUsed: false,
     consumers,

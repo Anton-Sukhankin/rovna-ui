@@ -1,6 +1,6 @@
 {
   "status": "passed",
-  "generatedAt": "2026-09-03T18:26:53.580Z",
+  "generatedAt": "2026-09-03T20:04:00.255Z",
   "workflow": ".github/workflows/quality.yml",
   "node": "22.20.0",
   "packageManager": "yarn@1.22.15",
@@ -124,7 +124,7 @@
       "evidence": [
         "corepack prepare yarn@1.22.15 --activate",
         "yarn install --frozen-lockfile --ignore-scripts --non-interactive --registry https://registry.npmjs.org",
-        "npm run release:ds-only",
+        "npm run release:ds-only -- --public-registry",
         "npm run consumers:ds-only -- --reuse-tarball",
         "npm run compatibility:react"
       ]
@@ -135,6 +135,18 @@
       "evidence": {
         "COREPACK_ENABLE_NETWORK": 1,
         "npm_config_offline": false
+      }
+    },
+    {
+      "id": "release-public-dependency-route",
+      "status": "passed",
+      "evidence": {
+        "run": "npm run release:ds-only -- --public-registry",
+        "env": {
+          "COREPACK_ENABLE_NETWORK": 1,
+          "npm_config_offline": false,
+          "npm_config_registry": "https://registry.npmjs.org"
+        }
       }
     },
     {

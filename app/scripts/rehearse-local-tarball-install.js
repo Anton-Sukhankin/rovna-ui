@@ -22,8 +22,10 @@ const manifestPath = path.join(
 );
 const releaseBoundaryPath = path.join(appRoot, 'release-boundary.json');
 const releaseBoundary = JSON.parse(fs.readFileSync(releaseBoundaryPath, 'utf8').replace(/^\uFEFF/, ''));
+const publicRegistry = 'https://registry.npmjs.org';
+const usePublicRegistry = process.argv.includes('--public-registry');
 const npmCliPath = path.join(path.dirname(process.execPath), 'node_modules', 'npm', 'bin', 'npm-cli.js');
-const yarnRuntimePath = path.join(
+const cachedYarnRuntimePath = path.join(
   process.env.LOCALAPPDATA || '',
   'node',
   'corepack',
@@ -43,6 +45,7 @@ const run = (command, args, options = {}) => {
     encoding: 'utf8',
     env: {
       ...process.env,
+      ...(options.env || {}),
       CI: '1',
     },
     stdio: options.capture ? 'pipe' : 'inherit',
@@ -60,6 +63,14 @@ const run = (command, args, options = {}) => {
   }
 
   return result;
+};
+
+const runYarn = (args, options = {}) => {
+  if (fs.existsSync(cachedYarnRuntimePath)) {
+    return run(process.execPath, [cachedYarnRuntimePath, ...args], options);
+  }
+
+  return run(process.platform === 'win32' ? 'yarn.cmd' : 'yarn', args, options);
 };
 
 const sha256 = filePath => {
@@ -422,19 +433,19 @@ const writeConsumerManifest = packed => {
 
   fs.writeFileSync(path.join(consumerRoot, 'package.json'), `${JSON.stringify(packageJson, null, 2)}\n`);
   fs.copyFileSync(path.join(appRoot, 'yarn.lock'), path.join(consumerRoot, 'yarn.lock'));
-  fs.writeFileSync(
-    path.join(consumerRoot, '.yarnrc'),
-    [
-      '"registry" "https://registry.npmjs.org"',
+  const yarnConfiguration = [`"registry" "${publicRegistry}"`];
+  if (!usePublicRegistry) {
+    yarnConfiguration.push(
       `"yarn-offline-mirror" "${toPosix(mirrorRoot)}"`,
       '"yarn-offline-mirror-pruning" false',
-      '',
-    ].join('\n'),
-  );
+    );
+  }
+  yarnConfiguration.push('');
+  fs.writeFileSync(path.join(consumerRoot, '.yarnrc'), yarnConfiguration.join('\n'));
 };
 
 const prepareSupplementalCache = manifest => {
-  const cacheDirResult = run(process.execPath, [yarnRuntimePath, 'cache', 'dir'], {
+  const cacheDirResult = runYarn(['cache', 'dir'], {
     cwd: appRoot,
     capture: true,
   });
@@ -493,10 +504,12 @@ const prepareSupplementalCache = manifest => {
 const writeResult = ({ archiveChecksum, mirrorCount, supplementalCacheEntries, packed, compensations, layers }) => {
   const result = {
     status: 'passed',
-    mode: 'offline-local-tarballs',
+    mode: usePublicRegistry ? 'public-dependencies-local-tarballs' : 'offline-local-tarballs',
     archiveChecksum,
     offlineMirrorTarballs: mirrorCount,
     supplementalPublicCacheEntries: supplementalCacheEntries,
+    publicDependencyRegistry: usePublicRegistry ? publicRegistry : null,
+    publicDependencyRegistryContacted: usePublicRegistry,
     releaseLevels: layers.map((layer, index) => ({ level: index, packages: layer })),
     packedTarballs: [...packed.entries()].map(([packageName, entry]) => ({
       package: packageName,
@@ -518,10 +531,15 @@ const writeResult = ({ archiveChecksum, mirrorCount, supplementalCacheEntries, p
     },
     consumer: {
       path: consumerRoot,
-      install: 'passed with yarn --offline',
-      dependencyCache: 'public Yarn cache plus reviewed offline archive',
+      install: usePublicRegistry
+        ? 'passed with local Rovna UI tarballs and public npm dependencies'
+        : 'passed with yarn --offline',
+      dependencyCache: usePublicRegistry
+        ? 'public npm registry for external dependencies; local tarballs for Rovna UI and compensations'
+        : 'public Yarn cache plus reviewed offline archive',
       build: 'passed without source aliases',
       domSmoke: 'passed',
+      registryContacted: usePublicRegistry,
       actionableWarnings: [],
       acceptedWarnings: releaseBoundary.acceptedConsumerWarnings,
     },
@@ -531,13 +549,11 @@ const writeResult = ({ archiveChecksum, mirrorCount, supplementalCacheEntries, p
 };
 
 const main = () => {
-  if (!fs.existsSync(archivePath) || !fs.existsSync(manifestPath)) {
+  if (!usePublicRegistry && (!fs.existsSync(archivePath) || !fs.existsSync(manifestPath))) {
     throw new Error('Offline-public archive v2 and its manifest are required for F-13');
   }
 
-  if (!fs.existsSync(yarnRuntimePath)) {
-    throw new Error(`Cached Yarn 1.22.15 runtime is required: ${yarnRuntimePath}`);
-  }
+  runYarn(['--version'], { capture: true });
 
   run(process.execPath, [path.join(appRoot, 'scripts', 'prepare-public-release.js'), '--check'], {
     cwd: appRoot,
@@ -553,10 +569,10 @@ const main = () => {
     throw new Error(`Unexpected release plan: ${releaseNames.size} packages in ${layers.length} levels`);
   }
 
-  const manifest = readJson(manifestPath);
-  const archiveChecksum = sha256(archivePath);
+  const manifest = usePublicRegistry ? null : readJson(manifestPath);
+  const archiveChecksum = usePublicRegistry ? null : sha256(archivePath);
 
-  if (archiveChecksum !== manifest.archive.checksum) {
+  if (!usePublicRegistry && archiveChecksum !== manifest.archive.checksum) {
     throw new Error(`Offline-public archive checksum mismatch: ${archiveChecksum}`);
   }
 
@@ -566,30 +582,40 @@ const main = () => {
   fs.rmSync(consumerRoot, { recursive: true, force: true });
   fs.mkdirSync(tarballsRoot, { recursive: true });
 
-  const mirrorCount = prepareOfflineMirror(manifest);
-  const supplementalCacheEntries = prepareSupplementalCache(manifest);
+  const mirrorCount = usePublicRegistry ? 0 : prepareOfflineMirror(manifest);
+  const supplementalCacheEntries = usePublicRegistry ? 0 : prepareSupplementalCache(manifest);
   const packed = packRelease(entries, layers);
   const compensations = packCompensations(entries, releaseNames);
   const consumerPackages = new Map([...packed, ...compensations]);
   copyExample();
   writeConsumerManifest(consumerPackages);
 
-  const installResult = run(
-    process.execPath,
-    [
-      yarnRuntimePath,
-      '--use-yarnrc',
-      path.join(consumerRoot, '.yarnrc'),
-      'install',
+  const installArgs = [
+    '--use-yarnrc',
+    path.join(consumerRoot, '.yarnrc'),
+    'install',
+    '--ignore-scripts',
+    '--ignore-engines',
+    '--non-interactive',
+  ];
+  const installEnvironment = {};
+  if (usePublicRegistry) {
+    installArgs.push('--registry', publicRegistry);
+    installEnvironment.COREPACK_ENABLE_NETWORK = '1';
+    installEnvironment.npm_config_offline = 'false';
+    installEnvironment.npm_config_registry = publicRegistry;
+  } else {
+    installArgs.push(
       '--offline',
-      '--ignore-scripts',
-      '--ignore-engines',
-      '--non-interactive',
       '--cache-folder',
       path.join(consumerRoot, '.yarn-cache'),
-    ],
-    { cwd: consumerRoot, capture: true },
-  );
+    );
+  }
+  const installResult = runYarn(installArgs, {
+    cwd: consumerRoot,
+    capture: true,
+    env: installEnvironment,
+  });
   const installOutput = `${installResult.stdout || ''}${installResult.stderr || ''}`;
   fs.writeFileSync(path.join(stagingRoot, 'consumer-install.log'), installOutput);
   process.stdout.write(installOutput);
@@ -624,18 +650,22 @@ const main = () => {
     throw new Error(`Actionable consumer warnings remain: ${actionableWarnings.join(', ')}`);
   }
 
-  const buildResult = run(process.execPath, [yarnRuntimePath, 'build'], {
+  const buildResult = runYarn(['build'], {
     cwd: consumerRoot,
     capture: true,
   });
   const buildOutput = `${buildResult.stdout || ''}${buildResult.stderr || ''}`;
   fs.writeFileSync(path.join(stagingRoot, 'consumer-build.log'), buildOutput);
   process.stdout.write(buildOutput);
-  run(process.execPath, [yarnRuntimePath, 'verify'], { cwd: consumerRoot });
+  runYarn(['verify'], { cwd: consumerRoot });
 
   writeResult({ archiveChecksum, mirrorCount, supplementalCacheEntries, packed, compensations, layers });
 
-  console.log('F-13 local tarball rehearsal passed.');
+  console.log(
+    usePublicRegistry
+      ? 'F-13 public-dependency/local-tarball rehearsal passed.'
+      : 'F-13 local tarball rehearsal passed.',
+  );
   console.log(`Packed internal tarballs: ${packed.size}`);
   console.log(`Packed compensation tarballs: ${compensations.size}`);
   console.log(`Offline public mirror tarballs: ${mirrorCount}`);

@@ -24,6 +24,8 @@ corepack yarn quality:r09
 
 Long-running browser/a11y/visual suites запускаются при изменении соответствующей поверхности. Полная приемка R-11 повторит все обязательные gates на одном final baseline.
 
+Локальный `corepack yarn release:ds-only` сохраняет строгий offline-сценарий и требует проверенный offline-public archive. В чистом GitHub Actions используется `npm run release:ds-only -- --public-registry`: внешние общедоступные зависимости изолированного consumer загружаются только с `https://registry.npmjs.org`, а все `@rovna-ui/*` и локальные compensation packages устанавливаются из свежесобранных tarball. Этот режим ничего не публикует.
+
 ## Storybook Baseline
 
 Текущий Storybook index и принятые browser/a11y/visual результаты принадлежат `app/storybook-static/index.json`, Q/R machine reports и `docs/r-final-quality-report.json`. После пересборки проверьте `/`, `/index.json`, `/iframe.html` и static asset graph. Старую static generation разрешено удалить только после успешной promotion новой.

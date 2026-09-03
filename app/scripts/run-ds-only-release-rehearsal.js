@@ -46,6 +46,7 @@ function runStep(id, script, args = []) {
 function main() {
   const startedAt = Date.now();
   const steps = [];
+  const usePublicRegistry = process.argv.includes('--public-registry');
   const reuseSupportedBuild = process.argv.includes('--reuse-supported-build');
   const reuseTarballRehearsal = process.argv.includes('--reuse-tarball');
   const reuseBundle = process.argv.includes('--reuse-bundle');
@@ -100,7 +101,11 @@ function main() {
         report: rehearsalReportPath,
       });
     } else {
-      execute('tarball-consumer-rehearsal', 'rehearse-local-tarball-install.js');
+      execute(
+        'tarball-consumer-rehearsal',
+        'rehearse-local-tarball-install.js',
+        usePublicRegistry ? ['--public-registry'] : [],
+      );
     }
     if (reuseBundle) {
       const bundleReportPath = path.join(repoRoot, 'release', 'f15-result.json');
@@ -138,6 +143,8 @@ function main() {
       releasePackages: rehearsal.packedTarballs.length,
       compensationTarballs: rehearsal.compensationTarballs.length,
       offlineMirrorTarballs: rehearsal.offlineMirrorTarballs,
+      publicDependencyRegistry: rehearsal.publicDependencyRegistry,
+      publicDependencyRegistryContacted: rehearsal.publicDependencyRegistryContacted === true,
       consumerInstall: rehearsal.consumer.install,
       consumerBuild: rehearsal.consumer.build,
       consumerDomSmoke: rehearsal.consumer.domSmoke,
@@ -171,9 +178,11 @@ function main() {
 
     const report = {
       status: passed ? 'passed' : 'failed-verification',
-      mode: 'ds-only-registry-free',
+      mode: usePublicRegistry
+        ? 'ds-only-public-dependencies-local-tarballs'
+        : 'ds-only-registry-free',
       checkedAt: new Date().toISOString(),
-      networkInstallAllowed: false,
+      networkInstallAllowed: usePublicRegistry,
       closedCorporateSourceUsed: false,
       steps,
       verification,
@@ -191,9 +200,11 @@ function main() {
   } catch (error) {
     const report = {
       status: 'failed',
-      mode: 'ds-only-registry-free',
+      mode: usePublicRegistry
+        ? 'ds-only-public-dependencies-local-tarballs'
+        : 'ds-only-registry-free',
       checkedAt: new Date().toISOString(),
-      networkInstallAllowed: false,
+      networkInstallAllowed: usePublicRegistry,
       closedCorporateSourceUsed: false,
       steps,
       error: error instanceof Error ? error.stack || error.message : String(error),

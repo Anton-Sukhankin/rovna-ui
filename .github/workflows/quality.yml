@@ -264,7 +264,11 @@ jobs:
         run: yarn install --frozen-lockfile --ignore-scripts --non-interactive --registry https://registry.npmjs.org
 
       - name: Rehearse packages and isolated consumers
-        run: npm run release:ds-only
+        env:
+          COREPACK_ENABLE_NETWORK: 1
+          npm_config_offline: false
+          npm_config_registry: https://registry.npmjs.org
+        run: npm run release:ds-only -- --public-registry
 
       - name: Verify supported consumer profiles
         run: npm run consumers:ds-only -- --reuse-tarball

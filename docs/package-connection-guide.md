@@ -36,6 +36,14 @@ corepack yarn release:create-bundle
 
 Generated release directories are local-only artifacts and are not committed.
 
+Для чистого CI-runner без локального offline-public archive разрешен эквивалентный сетевой rehearsal:
+
+```powershell
+npm run release:ds-only -- --public-registry
+```
+
+Флаг разрешает загрузку только внешних public dependencies из `https://registry.npmjs.org`. Пакеты Rovna UI и локальная компенсация по-прежнему проверяются как локальные tarball; публикация и закрытые registry не используются.
+
 ## Consumer Requirements
 
 The consumer must provide compatible `react` and `react-dom` versions. Install the main Rovna UI tarball and every transitive tarball resolved by the generated release manifest. Keep one version of React across the consumer graph.

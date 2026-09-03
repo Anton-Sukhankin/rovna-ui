@@ -45,6 +45,9 @@ function main() {
   const releaseYarnBootstrap = jobSteps('release-rehearsal').find(
     step => step.name === 'Activate Yarn 1',
   );
+  const releasePackageRehearsal = jobSteps('release-rehearsal').find(
+    step => step.name === 'Rehearse packages and isolated consumers',
+  );
 
   check(
     'jobs',
@@ -156,6 +159,17 @@ function main() {
     String(releaseYarnBootstrap?.env?.COREPACK_ENABLE_NETWORK) === '1'
       && releaseYarnBootstrap?.env?.npm_config_offline === false,
     releaseYarnBootstrap?.env,
+  );
+  check(
+    'release-public-dependency-route',
+    releasePackageRehearsal?.run === 'npm run release:ds-only -- --public-registry' &&
+      String(releasePackageRehearsal?.env?.COREPACK_ENABLE_NETWORK) === '1' &&
+      releasePackageRehearsal?.env?.npm_config_offline === false &&
+      releasePackageRehearsal?.env?.npm_config_registry === 'https://registry.npmjs.org',
+    {
+      run: releasePackageRehearsal?.run,
+      env: releasePackageRehearsal?.env,
+    },
   );
   check(
     'documentation-and-github-readiness',
