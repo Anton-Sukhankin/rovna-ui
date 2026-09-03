@@ -6,7 +6,8 @@
 
 ## Зафиксированная политика
 
-- браузер: установленный Chrome `151.0.7922.77`;
+- браузер: установленный Chrome из текущего проверяемого окружения;
+- baseline разделен по платформам: Windows хранится непосредственно в `app/.q-visual-baseline/`, Linux - в `app/.q-visual-baseline/linux/`;
 - DPR: `1`;
 - профили: `360x800`, `390x844`, `768x1024`, `1440x900`, `1920x1080`;
 - перед снимком ожидаются Storybook render, `document.fonts.ready`, изображения и стабилизация layout;
@@ -17,7 +18,7 @@
 
 ## Покрытие
 
-Baseline содержит `68` PNG-файлов:
+Каждый платформенный baseline содержит `88` PNG-файлов (`176` versioned PNG суммарно):
 
 - Tier 1 на обязательных viewport-профилях;
 - representative Tier 2/3;
@@ -25,14 +26,14 @@ Baseline содержит `68` PNG-файлов:
 - Modal, Drawer, Select, Popover, Filters и Tree в открытом состоянии;
 - контроль horizontal overflow и ошибок загрузки ресурсов.
 
-Manifest: `docs/q05-visual-baseline-manifest.json`. Baseline: `app/.q-visual-baseline/`.
+Manifest: `docs/q05-visual-baseline-manifest.json`. Он фиксирует активную платформу и количество снимков в обоих наборах. Baseline: `app/.q-visual-baseline/`.
 
 ## Результат
 
 | Метрика | Значение |
 | --- | ---: |
-| Проверки | `68` |
-| Passed | `68` |
+| Проверки на платформу | `88` |
+| Passed | `88` |
 | Failed | `0` |
 | Visual diffs | `0` |
 | Missing baselines | `0` |
@@ -45,7 +46,7 @@ Manifest: `docs/q05-visual-baseline-manifest.json`. Baseline: `app/.q-visual-bas
 1. Запустить `corepack yarn storybook:visual:audit` в `app/`.
 2. При падении просмотреть expected/actual/diff из `tmp/q05-visual-failures/`.
 3. Убедиться, что изменение намеренное и не скрывает clipping, overflow или ошибочный overlay.
-4. Обновлять только проверенный scope через фильтры runner; полный `--update` допустим лишь после просмотра всех изменений.
+4. Обновлять только baseline текущей платформы и только проверенный scope через фильтры runner; полный `--update` допустим лишь после просмотра всех изменений.
 5. Повторно запустить check-режим и требовать `0` diff.
 
 ## Решение

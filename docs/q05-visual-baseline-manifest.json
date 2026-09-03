@@ -1,6 +1,12 @@
 {
-  "generatedAt": "2026-09-01T21:10:09.010Z",
-  "browser": "installed Chrome 151.0.7922.175",
+  "generatedAt": "2026-09-03T15:52:09.737Z",
+  "browser": "installed Chrome 152.0.7977.66",
+  "baselinePlatform": "windows",
+  "baselineRoot": "app/.q-visual-baseline",
+  "baselineSets": {
+    "windows": 88,
+    "linux": 88
+  },
   "dpr": 1,
   "animationPolicy": "disabled through test-only injected CSS",
   "fontPolicy": "await document.fonts.ready",

@@ -8,7 +8,12 @@ const { chromium } = require('playwright');
 const appRoot = path.resolve(__dirname, '..');
 const repoRoot = path.resolve(appRoot, '..');
 const staticRoot = path.join(appRoot, 'storybook-static');
-const baselineRoot = path.join(appRoot, '.q-visual-baseline');
+const baselineBaseRoot = path.join(appRoot, '.q-visual-baseline');
+const baselinePlatform = process.platform === 'win32' ? 'windows' : process.platform;
+const baselineRoot =
+  baselinePlatform === 'windows'
+    ? baselineBaseRoot
+    : path.join(baselineBaseRoot, baselinePlatform);
 const actualRoot = path.join(repoRoot, 'tmp', 'q05-visual-actual');
 const failureRoot = path.join(repoRoot, 'tmp', 'q05-visual-failures');
 const reportPath = path.join(repoRoot, 'tmp', 'q05-visual-responsive-report.json');
@@ -577,12 +582,25 @@ async function main() {
   const fullMatrix = !options.storyId && !options.statesOnly && !options.profile && !options.state;
   const expectedBaselines = new Set(results.map(result => path.basename(result.baselinePath)));
   const baselineFiles = fs.readdirSync(baselineRoot).filter(file => file.endsWith('.png'));
+  const baselineSets = {
+    windows: fs
+      .readdirSync(baselineBaseRoot, { withFileTypes: true })
+      .filter(entry => entry.isFile() && entry.name.endsWith('.png')).length,
+    linux: fs.existsSync(path.join(baselineBaseRoot, 'linux'))
+      ? fs
+          .readdirSync(path.join(baselineBaseRoot, 'linux'), { withFileTypes: true })
+          .filter(entry => entry.isFile() && entry.name.endsWith('.png')).length
+      : 0,
+  };
   const staleBaselines = fullMatrix
     ? baselineFiles.filter(file => !expectedBaselines.has(file))
     : [];
   const manifest = {
     generatedAt: new Date().toISOString(),
     browser: `installed Chrome ${browserVersion}`,
+    baselinePlatform,
+    baselineRoot: path.relative(repoRoot, baselineRoot).replace(/\\/g, '/'),
+    baselineSets,
     dpr: 1,
     animationPolicy: 'disabled through test-only injected CSS',
     fontPolicy: 'await document.fonts.ready',

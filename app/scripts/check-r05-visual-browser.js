@@ -37,7 +37,16 @@ function main() {
   check(assertions, 'static-story-count', staticBuild.index?.storyCount === 1022, staticBuild.index?.storyCount, 1022);
   check(assertions, 'baseline-current-index-hash', manifest.storybookIndexSha256 === currentIndexHash, manifest.storybookIndexSha256, currentIndexHash);
   check(assertions, 'visual-current-index-hash', visual.storybookIndexSha256 === currentIndexHash, visual.storybookIndexSha256, currentIndexHash);
-  check(assertions, 'baseline-count', manifest.targetCount === 88 && manifest.baselineCount === 88, `${manifest.targetCount}/${manifest.baselineCount}`, '88/88');
+  check(
+    assertions,
+    'baseline-count',
+    manifest.targetCount === 88
+      && manifest.baselineCount === 88
+      && manifest.baselineSets?.windows === 88
+      && manifest.baselineSets?.linux === 88,
+    `${manifest.targetCount}/${manifest.baselineCount}; Windows=${manifest.baselineSets?.windows}; Linux=${manifest.baselineSets?.linux}`,
+    '88/88; Windows=88; Linux=88',
+  );
   check(assertions, 'baseline-no-stale-files', manifest.staleBaselines?.length === 0, manifest.staleBaselines?.length, 0);
   check(assertions, 'visual-status', visual.status === 'passed', visual.status, 'passed');
   check(assertions, 'visual-checks', visual.checks === 88 && visual.passed === 88 && visual.failed === 0, `${visual.passed}/${visual.checks}; failed=${visual.failed}`, '88/88; failed=0');

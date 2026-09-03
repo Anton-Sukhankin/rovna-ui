@@ -96,7 +96,9 @@ if (trackedLocalOnly.length) failures.push(`Tracked local-only paths: ${trackedL
 if (visibleLocalOnly.length) failures.push(`Visible unignored local-only paths: ${visibleLocalOnly.length}`);
 if (ignoredVersioned.length) failures.push(`Ignored versioned paths: ${ignoredVersioned.length}`);
 if (missingRequired.length) failures.push(`Missing required artifacts: ${missingRequired.join(', ')}`);
-if (visualBaselines.length !== 88) failures.push(`Expected 88 visual baselines, got ${visualBaselines.length}.`);
+if (visualBaselines.length !== 176) {
+  failures.push(`Expected 176 Windows/Linux visual baselines, got ${visualBaselines.length}.`);
+}
 
 const stableEntries = entries.map(entry => ({
   file: entry.file,

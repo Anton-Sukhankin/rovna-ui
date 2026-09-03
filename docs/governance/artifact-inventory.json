@@ -1,20 +1,20 @@
 {
   "status": "passed",
-  "generatedAt": "2026-09-03T14:05:04.012Z",
+  "generatedAt": "2026-09-03T15:52:19.004Z",
   "policyVersion": 1,
   "summary": {
-    "paths": 6518,
-    "tracked": 6480,
+    "paths": 6606,
+    "tracked": 6568,
     "untracked": 0,
     "ignored": 38,
     "unmatched": 0,
     "trackedLocalOnly": 0,
     "visibleLocalOnly": 0,
     "ignoredVersioned": 0,
-    "visualBaselines": 88,
+    "visualBaselines": 176,
     "classes": {
       "source-versioned": 5915,
-      "regression-baseline-versioned": 173,
+      "regression-baseline-versioned": 261,
       "evidence-versioned": 99,
       "source-asset-versioned": 2,
       "active-documentation-versioned": 38,
@@ -23,7 +23,7 @@
       "history-versioned": 89,
       "local-generated": 38
     },
-    "classifiedSha256": "16abce4f72e35846a4fed4f9f387fc8fd66c1b649f714bcf9350fcace59997a9"
+    "classifiedSha256": "34f4a3b51e0ead7ef4dbe609fe816ee2a68d22d17cc784701ac63d9b0f02331a"
   },
   "anomalies": {
     "unmatched": [],
@@ -537,6 +537,710 @@
       "class": "source-versioned",
       "trackedPolicy": true,
       "agentRead": "targeted"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-filters-filters--default--desktop.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-filters-filters--default--mobileCompact.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-filters-filters--default--mobileWide.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-filters-filters--default--tablet.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-filters-filters--default--wideDesktop.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-filters-filters--keyboard-accessibility--desktop--state-open.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-form-form--default--desktop.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-form-form--default--mobileCompact.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-form-form--default--mobileWide.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-form-form--default--tablet.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-form-form--default--wideDesktop.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-grid-col--long-text--desktop--state-r01-long-text.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-grid-col--responsive--mobileWide--state-r01-responsive.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-grid-row--long-text--mobileCompact--state-r01-long-text.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-header-samoletheader--mobile--mobileWide--state-mobile.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-header-samoletheader--not-authenticated--desktop.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-header-samoletheader--not-authenticated--mobileCompact.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-header-samoletheader--not-authenticated--mobileWide.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-header-samoletheader--not-authenticated--tablet.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-header-samoletheader--not-authenticated--wideDesktop.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-main-components-asynccheckbox--api-error--desktop--state-r03-error.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-main-components-asyncselect--api-loading--mobileWide--state-r03-loading.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-main-components-asyncselect--api-retry--desktop--state-r03-recovery.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-main-components-componentpicker--range-picker--mobileWide--state-r01-range-picker.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-main-components-componentpicker--select--desktop--state-r01-select.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-main-primitives-checkbox--default--desktop.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-main-primitives-dropdown--default--desktop.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-main-primitives-modal--keyboard-accessibility--desktop--state-open.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-main-primitives-modal--keyboard-accessibility--desktop--state-theme-global-open.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-main-primitives-modal--medium--desktop.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-main-primitives-modal--medium--mobileCompact.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-main-primitives-modal--medium--mobileWide.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-main-primitives-modal--medium--tablet.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-main-primitives-modal--medium--wideDesktop.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-main-primitives-popover--keyboard-focus--desktop--state-open.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-main-primitives-radio--default--desktop.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-main-primitives-select--large--desktop--state-open.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-main-primitives-select--large--desktop--state-theme-global-open.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-main-primitives-select--large--desktop.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-main-primitives-select--large--mobileCompact.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-main-primitives-select--large--mobileWide.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-main-primitives-select--large--tablet.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-main-primitives-select--large--wideDesktop.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-main-primitives-toggle--default--desktop.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-main-typography-typography--long-text--mobileCompact--state-r01-long-text.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-main-ui-emptyoverlay--constrained--mobileCompact--state-r01-constrained.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-main-ui-erroroverlay--constrained--mobileCompact--state-r01-constrained.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-primitives-button--primary--desktop--state-focus.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-primitives-button--primary--desktop--state-hover.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-primitives-button--primary--desktop--state-theme-global.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-primitives-button--primary--desktop.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-primitives-button--primary--mobileCompact.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-primitives-button--primary--mobileWide.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-primitives-button--primary--tablet.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-primitives-button--primary--wideDesktop.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-primitives-drawer--default--desktop.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-primitives-drawer--full-screen--desktop--state-open.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-primitives-input--play--desktop--state-focus.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-primitives-input--play--desktop--state-theme-global.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-primitives-input--play--desktop.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-primitives-input--play--mobileCompact.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-primitives-input--play--mobileWide.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-primitives-input--play--tablet.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-primitives-input--play--wideDesktop.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-primitives-input--validation--desktop--state-validation.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-primitives-tooltip--default--desktop.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-table-table--default--desktop--state-theme-global.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-table-table--default--desktop.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-table-table--default--mobileCompact.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-table-table--default--mobileWide.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-table-table--default--tablet.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-table-table--default--wideDesktop.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-table-table--empty--desktop--state-empty.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-table-table--keyboard-accessibility--desktop--state-filters-open.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-table-table--loading--desktop--state-loading.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-tree-tree--default--desktop.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-tree-tree--default--mobileCompact.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-tree-tree--default--mobileWide.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-tree-tree--default--tablet.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-tree-tree--default--wideDesktop.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-tree-tree--keyboard-accessibility--desktop--state-checked-expanded.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-upload-uploadarea--default--desktop.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-upload-uploadarea--default--mobileCompact.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-upload-uploadarea--default--mobileWide.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-upload-uploadarea--default--tablet.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-upload-uploadarea--default--wideDesktop.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-upload-uploadarea--limit--mobileWide--state-limit.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
+    },
+    {
+      "file": "app/.q-visual-baseline/linux/rovna-ui-upload-uploadarea--message--desktop--state-error.png",
+      "gitState": "tracked",
+      "rule": "visual-regression-baseline",
+      "class": "regression-baseline-versioned",
+      "trackedPolicy": true,
+      "agentRead": "visual-test-only"
     },
     {
       "file": "app/.q-visual-baseline/rovna-ui-filters-filters--default--desktop.png",

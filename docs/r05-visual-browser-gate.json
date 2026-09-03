@@ -1,6 +1,6 @@
 {
   "status": "passed",
-  "generatedAt": "2026-09-01T21:54:40.585Z",
+  "generatedAt": "2026-09-03T15:52:17.915Z",
   "storybookIndexSha256": "60e4e597f5c02cc49963afc181467adff3dffab34980429caf2cdab33bce5957",
   "checks": 28,
   "passed": 28,
@@ -73,8 +73,8 @@
     {
       "id": "baseline-count",
       "status": "passed",
-      "actual": "88/88",
-      "expected": "88/88"
+      "actual": "88/88; Windows=88; Linux=88",
+      "expected": "88/88; Windows=88; Linux=88"
     },
     {
       "id": "baseline-no-stale-files",
