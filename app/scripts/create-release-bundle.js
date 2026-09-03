@@ -11,13 +11,18 @@ const stagingRoot = path.join(repoRoot, 'tmp', 'f15-release-bundle');
 const npmCacheRoot = path.join(stagingRoot, 'npm-cache');
 const releaseBoundaryPath = path.join(appRoot, 'release-boundary.json');
 const releaseBoundary = readJson(releaseBoundaryPath);
-const npmCliPath = path.join(
-  path.dirname(process.execPath),
-  'node_modules',
-  'npm',
-  'bin',
-  'npm-cli.js',
-);
+const npmCliPath = [
+  path.join(path.dirname(process.execPath), 'node_modules', 'npm', 'bin', 'npm-cli.js'),
+  path.resolve(
+    path.dirname(process.execPath),
+    '..',
+    'lib',
+    'node_modules',
+    'npm',
+    'bin',
+    'npm-cli.js',
+  ),
+].find(candidate => fs.existsSync(candidate));
 
 function readJson(filePath) {
   return JSON.parse(fs.readFileSync(filePath, 'utf8').replace(/^\uFEFF/, ''));
@@ -55,6 +60,14 @@ function run(command, args, options = {}) {
   }
 
   return result;
+}
+
+function runNpm(args, options = {}) {
+  if (npmCliPath) {
+    return run(process.execPath, [npmCliPath, ...args], options);
+  }
+
+  return run(process.platform === 'win32' ? 'npm.cmd' : 'npm', args, options);
 }
 
 function assertGeneratedPath(targetPath, expectedParent, expectedName) {
@@ -345,10 +358,8 @@ function main() {
       const distManifest = readJson(distManifestPath);
       validateDistManifest(distManifest, packageName);
 
-      run(
-        process.execPath,
+      runNpm(
         [
-          npmCliPath,
           'pack',
           '--ignore-scripts',
           '--pack-destination',

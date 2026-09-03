@@ -24,7 +24,18 @@ const releaseBoundaryPath = path.join(appRoot, 'release-boundary.json');
 const releaseBoundary = JSON.parse(fs.readFileSync(releaseBoundaryPath, 'utf8').replace(/^\uFEFF/, ''));
 const publicRegistry = 'https://registry.npmjs.org';
 const usePublicRegistry = process.argv.includes('--public-registry');
-const npmCliPath = path.join(path.dirname(process.execPath), 'node_modules', 'npm', 'bin', 'npm-cli.js');
+const npmCliPath = [
+  path.join(path.dirname(process.execPath), 'node_modules', 'npm', 'bin', 'npm-cli.js'),
+  path.resolve(
+    path.dirname(process.execPath),
+    '..',
+    'lib',
+    'node_modules',
+    'npm',
+    'bin',
+    'npm-cli.js',
+  ),
+].find(candidate => fs.existsSync(candidate));
 const cachedYarnRuntimePath = path.join(
   process.env.LOCALAPPDATA || '',
   'node',
@@ -71,6 +82,14 @@ const runYarn = (args, options = {}) => {
   }
 
   return run(process.platform === 'win32' ? 'yarn.cmd' : 'yarn', args, options);
+};
+
+const runNpm = (args, options = {}) => {
+  if (npmCliPath) {
+    return run(process.execPath, [npmCliPath, ...args], options);
+  }
+
+  return run(process.platform === 'win32' ? 'npm.cmd' : 'npm', args, options);
 };
 
 const sha256 = filePath => {
@@ -270,10 +289,8 @@ const packRelease = (entries, layers) => {
       const distManifest = readJson(distManifestPath);
       const filename = tarballFilename(distManifest);
 
-      run(
-        process.execPath,
+      runNpm(
         [
-          npmCliPath,
           'pack',
           '--ignore-scripts',
           '--pack-destination',
@@ -335,10 +352,8 @@ const packCompensations = (entries, releaseNames) => {
 
     const filename = tarballFilename(entry.sourceManifest);
 
-    run(
-      process.execPath,
+    runNpm(
       [
-        npmCliPath,
         'pack',
         '--ignore-scripts',
         '--pack-destination',
