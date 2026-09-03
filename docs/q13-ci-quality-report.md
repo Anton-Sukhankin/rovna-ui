@@ -12,7 +12,7 @@
 | `browser-quality` | 120 min | `quality` | Chromium, runtime, network, browser matrix, a11y, visual, language, performance |
 | `release-rehearsal` | 180 min | `quality`, `browser-quality` | tarballs, consumers, React matrix; без публикации |
 
-Concurrency задана по Git ref с `cancel-in-progress: true`. Node закреплен в обеих `.nvmrc` как `23.11.1`, package manager как `yarn@1.22.15`. В workflow нет `continue-on-error` и команд публикации пакетов.
+Concurrency задана по Git ref с `cancel-in-progress: true`. Node закреплен в обеих `.nvmrc` как LTS `22.20.0`, package manager как `yarn@1.22.15`. Эта версия Node совместима с Linux-бинарниками dependency graph, которые не поддерживают промежуточную ветку Node 23. В workflow нет `continue-on-error` и команд публикации пакетов.
 
 ## Локальное доказательство
 
