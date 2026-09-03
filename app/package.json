@@ -219,7 +219,9 @@
     "express/path-to-regexp": "0.1.13",
     "rollup": "4.62.4",
     "vite": "7.3.6",
-    "browserslist": "4.28.8"
+    "browserslist": "4.28.8",
+    "fast-uri": "3.1.6",
+    "qs": "6.16.0"
   },
   "prettier": "@rovna-ui/prettier-config",
   "devDependencies": {
@@ -231,7 +233,7 @@
     "@babel/preset-typescript": "^7.28.5",
     "@commitlint/cli": "^17.7.1",
     "@commitlint/config-conventional": "^17.7.0",
-    "@faker-js/faker": "^10.1.0",
+    "@faker-js/faker": "10.5.0",
     "@react-docgen/cli": "^3.0.4",
     "@rollup/plugin-commonjs": "^28.0.9",
     "@rollup/plugin-node-resolve": "^16.0.3",

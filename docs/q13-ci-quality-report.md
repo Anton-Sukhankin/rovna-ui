@@ -1,8 +1,8 @@
 # Q-13: CI quality contract
 
-Дата проверки: 2026-08-08.
+Дата проверки: 2026-09-03.
 
-Статус: `[x]` CI-конфигурация и локально-эквивалентные команды проверены; первый remote GitHub run ожидает появления remote.
+Статус: `[x]` CI-конфигурация и локально-эквивалентные команды проверены; remote GitHub Actions подключен и исполняет workflow.
 
 ## Workflow
 
@@ -31,9 +31,9 @@ Vitest browser JSON перенесен в `tmp/q03-storybook-browser-tests.json`
 
 CI сохраняет static Storybook, JSON reports, visual actual/failure/diff, runtime screenshots и failure traces. Release job сохраняет rehearsal/consumer/React reports и локальный release bundle. Retention для quality artifacts установлен в `14` дней.
 
-## Ограничение
+## Remote verification
 
-GitHub Actions workflow еще не исполнялся удаленно, потому что remote repository не подтвержден. Это внешняя белая область `W-23`, не блокирующая локальную работу Storybook, package artifacts или consumers. Публикация пакетов намеренно отсутствует в quality workflow.
+Первый remote run подтвердил запуск workflow и выявил два отличия чистого Linux-окружения: Node 23 не поддерживался Linux-бинарником dependency graph, а в публичной advisory-базе появились новые записи для dev dependencies. Обе `.nvmrc` переведены на LTS `22.20.0`; Faker и transitive `fast-uri`/`qs` обновлены до исправленных версий. Актуальный live-статус запусков хранится в GitHub Actions, а не дублируется в этом снимке. Публикация пакетов намеренно отсутствует в quality workflow.
 
 Машинные доказательства:
 

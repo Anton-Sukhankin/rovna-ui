@@ -1,14 +1,14 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:62f73cbe-5f2e-5604-bd58-f44a2b25124b",
+  "serialNumber": "urn:uuid:ab39e4d2-d30c-5412-ab8e-3c323b13a03b",
   "version": 1,
   "metadata": {
     "component": {
       "type": "application",
-      "bom-ref": "rovna-ui-workspace@62f73cbe5f2e",
+      "bom-ref": "rovna-ui-workspace@ab39e4d2d30c",
       "name": "Rovna UI workspace",
-      "version": "62f73cbe5f2e",
+      "version": "ab39e4d2d30c",
       "licenses": [
         {
           "expression": "MIT"
@@ -21,7 +21,7 @@
         },
         {
           "name": "rovna-ui:yarn-lock-sha256",
-          "value": "62f73cbe5f2ec6043d58f44a2b25124bea9d3ea4c01da7063ac85210870ed2e8"
+          "value": "ab39e4d2d30c7412eb8e3c323b13a03bd7cedcf03ae8820f16503978e412a864"
         },
         {
           "name": "rovna-ui:license-policy",

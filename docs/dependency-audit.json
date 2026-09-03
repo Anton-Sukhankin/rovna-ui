@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "status": "passed",
-  "checkedAt": "2026-09-01T18:57:03.295Z",
+  "checkedAt": "2026-09-03T13:14:17.454Z",
   "registry": "https://registry.npmjs.org",
   "sourcePolicy": "public-npm-only",
-  "lockSha256": "62f73cbe5f2ec6043d58f44a2b25124bea9d3ea4c01da7063ac85210870ed2e8",
+  "lockSha256": "ab39e4d2d30c7412eb8e3c323b13a03bd7cedcf03ae8820f16503978e412a864",
   "lifecycleScriptsExecuted": false,
   "production": {
     "status": "passed",

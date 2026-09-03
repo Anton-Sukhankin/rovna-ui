@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "status": "passed",
-  "lockSha256": "62f73cbe5f2ec6043d58f44a2b25124bea9d3ea4c01da7063ac85210870ed2e8",
+  "lockSha256": "ab39e4d2d30c7412eb8e3c323b13a03bd7cedcf03ae8820f16503978e412a864",
   "releaseBoundary": {
     "expectedPackages": 21,
     "representedPackages": 21
@@ -11,7 +11,7 @@
     "components": 204,
     "dependencyEdges": 684,
     "missingDependencies": [],
-    "deterministicSerialNumber": "urn:uuid:62f73cbe-5f2e-5604-bd58-f44a2b25124b"
+    "deterministicSerialNumber": "urn:uuid:ab39e4d2-d30c-5412-ab8e-3c323b13a03b"
   },
   "licenses": {
     "packages": 1360,
@@ -24,10 +24,10 @@
     "installedLifecyclePackages": 4
   },
   "lockfile": {
-    "entries": 1924,
-    "lockSha256": "62f73cbe5f2ec6043d58f44a2b25124bea9d3ea4c01da7063ac85210870ed2e8",
+    "entries": 1929,
+    "lockSha256": "ab39e4d2d30c7412eb8e3c323b13a03bd7cedcf03ae8820f16503978e412a864",
     "registryHosts": {
-      "registry.npmjs.org": 1924
+      "registry.npmjs.org": 1929
     },
     "invalidSources": [],
     "missingVersion": [],

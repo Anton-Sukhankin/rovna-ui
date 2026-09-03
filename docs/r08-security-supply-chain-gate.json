@@ -1,11 +1,11 @@
 {
   "status": "passed",
-  "generatedAt": "2026-09-01T22:22:09.869Z",
+  "generatedAt": "2026-09-03T13:14:27.592Z",
   "checks": 20,
   "passed": 20,
   "acceptedRisks": 0,
   "failed": 0,
-  "lockSha256": "62f73cbe5f2ec6043d58f44a2b25124bea9d3ea4c01da7063ac85210870ed2e8",
+  "lockSha256": "ab39e4d2d30c7412eb8e3c323b13a03bd7cedcf03ae8820f16503978e412a864",
   "assertions": [
     {
       "id": "secret-scan",
@@ -58,17 +58,17 @@
     {
       "id": "audit-lock-freshness",
       "status": "passed",
-      "actual": "62f73cbe5f2ec6043d58f44a2b25124bea9d3ea4c01da7063ac85210870ed2e8",
-      "expected": "62f73cbe5f2ec6043d58f44a2b25124bea9d3ea4c01da7063ac85210870ed2e8"
+      "actual": "ab39e4d2d30c7412eb8e3c323b13a03bd7cedcf03ae8820f16503978e412a864",
+      "expected": "ab39e4d2d30c7412eb8e3c323b13a03bd7cedcf03ae8820f16503978e412a864"
     },
     {
       "id": "lock-source-policy",
       "status": "passed",
       "actual": {
-        "registry.npmjs.org": 1924
+        "registry.npmjs.org": 1929
       },
       "expected": {
-        "registry.npmjs.org": 1924
+        "registry.npmjs.org": 1929
       }
     },
     {
