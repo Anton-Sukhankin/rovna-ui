@@ -1,0 +1,1 @@
+export { SPassReport } from './SPassReport';

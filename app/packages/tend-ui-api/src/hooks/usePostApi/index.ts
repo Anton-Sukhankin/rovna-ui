@@ -1,0 +1,1 @@
+export { usePostApi } from './usePostApi';

@@ -1,0 +1,1 @@
+export { MailFavorite } from './MailFavorite';

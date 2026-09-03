@@ -1,0 +1,1 @@
+export { ClockAlt } from './ClockAlt';

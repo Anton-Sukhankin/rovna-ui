@@ -1,0 +1,1 @@
+export { OpenInFull } from './OpenInFull';

@@ -1,0 +1,1 @@
+export { FastRewind } from './FastRewind';

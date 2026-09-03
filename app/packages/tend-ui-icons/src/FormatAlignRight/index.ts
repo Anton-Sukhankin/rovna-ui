@@ -1,0 +1,1 @@
+export { FormatAlignRight } from './FormatAlignRight';

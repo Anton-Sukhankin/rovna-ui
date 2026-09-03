@@ -1,0 +1,1 @@
+export { GarageHome } from './GarageHome';

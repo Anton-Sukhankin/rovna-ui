@@ -1,0 +1,1 @@
+export { BarChartAlt } from './BarChartAlt';

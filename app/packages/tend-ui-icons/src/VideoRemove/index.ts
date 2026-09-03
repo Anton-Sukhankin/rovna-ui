@@ -1,0 +1,1 @@
+export { VideoRemove } from './VideoRemove';

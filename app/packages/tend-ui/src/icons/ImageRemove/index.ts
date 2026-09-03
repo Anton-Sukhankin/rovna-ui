@@ -1,0 +1,1 @@
+export { ImageRemove } from './ImageRemove';

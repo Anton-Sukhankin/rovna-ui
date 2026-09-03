@@ -1,0 +1,1 @@
+export { DoubleArrowVertical } from './DoubleArrowVertical';

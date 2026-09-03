@@ -1,0 +1,1 @@
+export { LikeFill } from './LikeFill';

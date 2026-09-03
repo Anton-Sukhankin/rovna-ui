@@ -1,0 +1,13 @@
+{
+  "extends": "@rovna-ui/ts-config/tsconfig.base.json",
+  "compilerOptions": {
+    "jsx": "react",
+    "outDir": "dist",
+    "declarationDir": "dist",
+    "baseUrl": ".",
+    "paths": {
+      "@rovna-internal/styling/*": ["src/*"]
+    },
+    "types": ["node", "@testing-library/jest-dom", "jest"]
+  }
+}

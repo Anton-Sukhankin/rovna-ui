@@ -1,0 +1,1 @@
+export { CalendarFavorite } from './CalendarFavorite';

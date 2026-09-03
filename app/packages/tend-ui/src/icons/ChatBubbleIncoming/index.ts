@@ -1,0 +1,1 @@
+export { ChatBubbleIncoming } from './ChatBubbleIncoming';

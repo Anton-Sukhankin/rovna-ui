@@ -1,0 +1,1 @@
+export { OpenInNewDown } from './OpenInNewDown';

@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "status": "passed",
+  "lockSha256": "62f73cbe5f2ec6043d58f44a2b25124bea9d3ea4c01da7063ac85210870ed2e8",
+  "releaseBoundary": {
+    "expectedPackages": 21,
+    "representedPackages": 21
+  },
+  "sbom": {
+    "format": "CycloneDX 1.5",
+    "components": 204,
+    "dependencyEdges": 684,
+    "missingDependencies": [],
+    "deterministicSerialNumber": "urn:uuid:62f73cbe-5f2e-5604-bd58-f44a2b25124b"
+  },
+  "licenses": {
+    "packages": 1360,
+    "runtimePackages": 204,
+    "developmentPackages": 1156,
+    "validSpdx": 1314,
+    "missing": 0,
+    "nonSpdxOrInvalid": 0,
+    "ownerUnconfirmedMetadata": 46,
+    "installedLifecyclePackages": 4
+  },
+  "lockfile": {
+    "entries": 1924,
+    "lockSha256": "62f73cbe5f2ec6043d58f44a2b25124bea9d3ea4c01da7063ac85210870ed2e8",
+    "registryHosts": {
+      "registry.npmjs.org": 1924
+    },
+    "invalidSources": [],
+    "missingVersion": [],
+    "missingResolved": [],
+    "missingIntegrity": []
+  },
+  "sourceAudit": {
+    "secretFindings": 0,
+    "activeInternalReferences": 0,
+    "unreviewedReferenceFiles": 0,
+    "unexpectedCandidates": 0,
+    "blockers": []
+  },
+  "sourceArtifacts": {
+    "executableArtifacts": [],
+    "unexpectedBinaryArtifacts": [],
+    "suspiciousCredentialFiles": [],
+    "activeAbsolutePaths": [],
+    "referenceAbsolutePathFiles": 11,
+    "sourceLifecycleScripts": []
+  },
+  "installPolicy": {
+    "lifecycleScriptsExecutedDuringR08": false,
+    "publicRegistryOnly": true,
+    "closedCorporateSourcesUsed": false
+  },
+  "ownerDecisions": [
+    {
+      "id": "project-license",
+      "status": "resolved",
+      "blockingLocalUse": false,
+      "note": "The root MIT license is the project authorization; package manifests mirror it."
+    }
+  ],
+  "failures": []
+}

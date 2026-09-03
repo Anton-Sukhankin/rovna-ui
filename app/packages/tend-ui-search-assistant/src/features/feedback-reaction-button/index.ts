@@ -1,0 +1,1 @@
+export { FeedbackReactionButton } from './FeedbackReactionButton';

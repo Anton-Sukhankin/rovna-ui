@@ -1,0 +1,1 @@
+export { Chair } from './Chair';

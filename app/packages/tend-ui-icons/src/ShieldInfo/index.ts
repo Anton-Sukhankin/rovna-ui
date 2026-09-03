@@ -1,0 +1,1 @@
+export { ShieldInfo } from './ShieldInfo';

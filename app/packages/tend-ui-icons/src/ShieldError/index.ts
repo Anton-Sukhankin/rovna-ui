@@ -1,0 +1,1 @@
+export { ShieldError } from './ShieldError';

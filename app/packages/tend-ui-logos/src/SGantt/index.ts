@@ -1,0 +1,1 @@
+export { SGantt } from './SGantt';

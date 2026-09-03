@@ -1,0 +1,1 @@
+export { FavoriteFill } from './FavoriteFill';

@@ -1,0 +1,159 @@
+{
+  "schemaVersion": 1,
+  "status": "captured",
+  "generatedAt": "2026-09-01T20:28:03.903Z",
+  "git": {
+    "branch": null,
+    "head": null,
+    "origin": null
+  },
+  "storybook": {
+    "entries": 1238,
+    "stories": 1022,
+    "docs": 216,
+    "indexSha256": "60e4e597f5c02cc49963afc181467adff3dffab34980429caf2cdab33bce5957",
+    "treeSha256": "3e21c68c305f4c2a1d2b99164ebbc2910028d37554daaadc0fa25a2f591deead",
+    "files": 779,
+    "bytes": 24574266
+  },
+  "packages": {
+    "supported": 21,
+    "passed": 21,
+    "artifactTreeSha256": "a0c9373821b3cf8a22422a30ffb1d4f087858dcc9e43b77ce95005fde2a9605f",
+    "files": 16937,
+    "bytes": 10328496,
+    "rows": [
+      {
+        "package": "tend-ui",
+        "files": 7665,
+        "bytes": 3009036,
+        "sha256": "7365ba5e9b69d549bcc5d16d366b289aa94518121384c01301f2478d33722375"
+      },
+      {
+        "package": "tend-ui-api",
+        "files": 113,
+        "bytes": 83491,
+        "sha256": "0374b653fef53bffc24d4b46bd4eea55ad714eadf525d0f3fdc98d3f4f1d0a4c"
+      },
+      {
+        "package": "tend-ui-base",
+        "files": 49,
+        "bytes": 12436,
+        "sha256": "19fdb9bc873f95c3fdae147d3d28fe720b3fa7c8c6aa71e8c9892fd59cddf547"
+      },
+      {
+        "package": "tend-ui-factories",
+        "files": 45,
+        "bytes": 16878,
+        "sha256": "20a9ad1b9655ee82369504ceb098052c579a8a9e830e8c4ccb1cb17e1c3e64d7"
+      },
+      {
+        "package": "tend-ui-favicons",
+        "files": 23,
+        "bytes": 12823,
+        "sha256": "0783fe4f271a770bc9ce58ff36bbba351f803c66a04b3dc48ba289bde3af6da9"
+      },
+      {
+        "package": "tend-ui-fonts",
+        "files": 21,
+        "bytes": 12885,
+        "sha256": "60d73abd2f2137d8aed9e406b7091e2b4a7dd0aff69d044ef354d3bc5569494b"
+      },
+      {
+        "package": "tend-ui-form",
+        "files": 177,
+        "bytes": 150098,
+        "sha256": "5d17c7b9e7c211cb93eb0202e4a5988078b7f62628b294a356a706e10861e661"
+      },
+      {
+        "package": "tend-ui-grid",
+        "files": 91,
+        "bytes": 50839,
+        "sha256": "ad838b3619615b6efbea67d6f220e1679a76fb53670e65b7fa575d9dee522c5d"
+      },
+      {
+        "package": "tend-ui-header",
+        "files": 629,
+        "bytes": 1803747,
+        "sha256": "4fb81ded7a6a3238cdd12b798cfb90da485df7cfe98f4840fca0491cc9bcf7cc"
+      },
+      {
+        "package": "tend-ui-hooks",
+        "files": 255,
+        "bytes": 99804,
+        "sha256": "6be5984077b69b52ad98c1515de0043bc624584133c5e9e425889ebf56658a83"
+      },
+      {
+        "package": "tend-ui-icons",
+        "files": 4685,
+        "bytes": 2548275,
+        "sha256": "8d70931c9db4f213dcb94785e3d6d638f378ad223bb1e7f4e27f12bdd347368a"
+      },
+      {
+        "package": "tend-ui-locale",
+        "files": 65,
+        "bytes": 42178,
+        "sha256": "481203d72ae0a5950911e786a6237cd424f8e146281fa724ff3749f76d235250"
+      },
+      {
+        "package": "tend-ui-logos",
+        "files": 993,
+        "bytes": 690134,
+        "sha256": "7abf8b6769e619e76b33e97ca5417b4532c20a44f3fba9ab199abb25f9a13951"
+      },
+      {
+        "package": "tend-ui-primitives",
+        "files": 1079,
+        "bytes": 1188608,
+        "sha256": "2f837e510d5b14481bcc889f9f9d5e205b8f8149444f57638ef4e34fde8a337b"
+      },
+      {
+        "package": "tend-ui-styling",
+        "files": 351,
+        "bytes": 91620,
+        "sha256": "66203d84d0c5397744640651926f2459871b927914014c5f98901d71a14ce04c"
+      },
+      {
+        "package": "tend-ui-theme",
+        "files": 57,
+        "bytes": 75400,
+        "sha256": "81b0da024915e742271377e12eec7cf6fde9bbfa004056fad0d1b2bba6b1d59f"
+      },
+      {
+        "package": "tend-ui-tokens",
+        "files": 35,
+        "bytes": 73709,
+        "sha256": "35a48868ba8cc133fc203a1f7fb62674ff635d0884867381b1b735d5f8b738ea"
+      },
+      {
+        "package": "tend-ui-types",
+        "files": 33,
+        "bytes": 23918,
+        "sha256": "6454c900230e5143097772eb74ca677e8e024681ba4783dae4b75b862a047cd7"
+      },
+      {
+        "package": "tend-ui-typography",
+        "files": 163,
+        "bytes": 85751,
+        "sha256": "fd8ae9da321b06361166ebc607bb8114d2ca82a202cd164b031a03d24cb0f73f"
+      },
+      {
+        "package": "tend-ui-upload",
+        "files": 163,
+        "bytes": 156966,
+        "sha256": "c6ebf438c430b16ec56c0e379c0cbdb4aaf44040ea24339a6634d846eb2eba16"
+      },
+      {
+        "package": "tend-ui-utils",
+        "files": 245,
+        "bytes": 99900,
+        "sha256": "fe7acc11887f6a82f4c1e5d2f11bb3d1581045f85742d540010be89c674c3cd5"
+      }
+    ]
+  },
+  "inputs": {
+    "yarnLockSha256": "62f73cbe5f2ec6043d58f44a2b25124bea9d3ea4c01da7063ac85210870ed2e8",
+    "releaseBoundarySha256": "0ac5fc4d837bf02fa15a470af868aa1d053b4d0f8a98bdebe62f8edffab1b153"
+  },
+  "publicationPerformed": false
+}

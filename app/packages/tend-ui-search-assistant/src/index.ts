@@ -1,0 +1,1 @@
+export { SearchAssistant } from './SearchAssistant';

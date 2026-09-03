@@ -1,0 +1,1 @@
+export { VideoCameraDone } from './VideoCameraDone';

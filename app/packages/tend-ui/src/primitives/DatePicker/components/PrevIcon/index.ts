@@ -1,0 +1,1 @@
+export { PrevIcon } from './styled';

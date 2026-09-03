@@ -1,0 +1,1 @@
+export { FileRemove } from './FileRemove';

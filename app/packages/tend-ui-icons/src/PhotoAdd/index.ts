@@ -1,0 +1,1 @@
+export { PhotoAdd } from './PhotoAdd';

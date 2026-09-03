@@ -1,0 +1,1 @@
+export { mapFileToAttachment } from './mapFileToAttachment';

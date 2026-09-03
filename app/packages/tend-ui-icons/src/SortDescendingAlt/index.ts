@@ -1,0 +1,1 @@
+export { SortDescendingAlt } from './SortDescendingAlt';

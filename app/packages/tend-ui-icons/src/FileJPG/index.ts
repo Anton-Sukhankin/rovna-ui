@@ -1,0 +1,1 @@
+export { FileJPG } from './FileJPG';

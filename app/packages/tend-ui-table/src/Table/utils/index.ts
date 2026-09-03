@@ -1,0 +1,1 @@
+export { mapColumnToSorter } from './mapColumnToSorter';

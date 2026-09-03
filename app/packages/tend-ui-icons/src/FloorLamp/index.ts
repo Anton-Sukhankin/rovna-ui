@@ -1,0 +1,1 @@
+export { FloorLamp } from './FloorLamp';

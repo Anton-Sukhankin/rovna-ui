@@ -1,0 +1,1 @@
+export { MuseoSansCyrl } from './MuseoSansCyrl';

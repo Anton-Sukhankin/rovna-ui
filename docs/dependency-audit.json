@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "status": "passed",
+  "checkedAt": "2026-09-01T18:57:03.295Z",
+  "registry": "https://registry.npmjs.org",
+  "sourcePolicy": "public-npm-only",
+  "lockSha256": "62f73cbe5f2ec6043d58f44a2b25124bea9d3ea4c01da7063ac85210870ed2e8",
+  "lifecycleScriptsExecuted": false,
+  "production": {
+    "status": "passed",
+    "groups": "dependencies",
+    "auditExitCode": 0,
+    "uniqueAdvisories": 0,
+    "severities": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0
+    },
+    "dependencies": 276,
+    "advisories": []
+  },
+  "full": {
+    "status": "passed",
+    "groups": "all",
+    "auditExitCode": 0,
+    "uniqueAdvisories": 0,
+    "severities": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0
+    },
+    "dependencies": 1586,
+    "advisories": []
+  }
+}

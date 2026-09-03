@@ -1,0 +1,1 @@
+export { FolderDocs } from './FolderDocs';
