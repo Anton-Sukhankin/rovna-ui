@@ -90,7 +90,7 @@ jobs:
 
       - name: Upload Storybook
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: rovna-ui-storybook
           path: app/storybook-static
@@ -98,7 +98,7 @@ jobs:
 
       - name: Upload quality reports
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: rovna-ui-quality-reports
           path: |
@@ -197,7 +197,7 @@ jobs:
 
       - name: Upload browser reports
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: rovna-ui-browser-quality-reports
           path: |
@@ -217,7 +217,7 @@ jobs:
 
       - name: Upload browser failure screenshots, diffs and traces
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: rovna-ui-browser-failures
           path: |
@@ -275,7 +275,7 @@ jobs:
 
       - name: Upload release rehearsal reports
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: rovna-ui-release-rehearsal
           path: |
