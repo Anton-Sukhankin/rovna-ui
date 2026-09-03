@@ -81,11 +81,6 @@
       "evidence": "Repository visibility and the right to publish source must be confirmed by the owner."
     },
     {
-      "id": "github-remote-handoff",
-      "status": "accepted-owner-action",
-      "evidence": "No origin is configured; remote creation and push were not performed."
-    },
-    {
       "id": "docker-runtime-environment",
       "status": "accepted-environment-action",
       "evidence": "Docker CLI is unavailable; the optional container route is statically validated."

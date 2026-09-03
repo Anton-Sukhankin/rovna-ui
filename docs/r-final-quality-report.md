@@ -41,7 +41,6 @@
 | ID | Состояние |
 | --- | --- |
 | `github-visibility-and-rights` | Repository visibility and the right to publish source must be confirmed by the owner. |
-| `github-remote-handoff` | No origin is configured; remote creation and push were not performed. |
 | `docker-runtime-environment` | Docker CLI is unavailable; the optional container route is statically validated. |
 | `human-assistive-product-review` | Automated visual and assistive gates passed; a real screen-reader user review remains an optional owner-led acceptance step. |
 
