@@ -42,6 +42,9 @@ function main() {
   const releaseRuns = jobSteps('release-rehearsal')
     .map(step => step.run || '')
     .join('\n');
+  const releaseYarnBootstrap = jobSteps('release-rehearsal').find(
+    step => step.name === 'Activate Yarn 1',
+  );
 
   check(
     'jobs',
@@ -147,6 +150,12 @@ function main() {
       command => releaseRuns.includes(command),
     ),
     releaseRuns.split('\n').filter(Boolean),
+  );
+  check(
+    'release-corepack-bootstrap',
+    String(releaseYarnBootstrap?.env?.COREPACK_ENABLE_NETWORK) === '1'
+      && releaseYarnBootstrap?.env?.npm_config_offline === false,
+    releaseYarnBootstrap?.env,
   );
   check(
     'documentation-and-github-readiness',

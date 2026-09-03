@@ -252,6 +252,9 @@ jobs:
           cache-dependency-path: app/yarn.lock
 
       - name: Activate Yarn 1
+        env:
+          COREPACK_ENABLE_NETWORK: 1
+          npm_config_offline: false
         run: corepack prepare yarn@1.22.15 --activate
 
       - name: Install public dependencies

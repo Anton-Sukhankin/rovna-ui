@@ -1,6 +1,6 @@
 {
   "status": "passed",
-  "generatedAt": "2026-09-03T15:52:19.221Z",
+  "generatedAt": "2026-09-03T18:26:53.580Z",
   "workflow": ".github/workflows/quality.yml",
   "node": "22.20.0",
   "packageManager": "yarn@1.22.15",
@@ -128,6 +128,14 @@
         "npm run consumers:ds-only -- --reuse-tarball",
         "npm run compatibility:react"
       ]
+    },
+    {
+      "id": "release-corepack-bootstrap",
+      "status": "passed",
+      "evidence": {
+        "COREPACK_ENABLE_NETWORK": 1,
+        "npm_config_offline": false
+      }
     },
     {
       "id": "documentation-and-github-readiness",

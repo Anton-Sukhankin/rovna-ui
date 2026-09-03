@@ -1,6 +1,6 @@
 {
   "status": "passed-with-owner-actions",
-  "generatedAt": "2026-09-03T12:35:31.311Z",
+  "generatedAt": "2026-09-03T18:27:07.164Z",
   "checks": [
     {
       "id": "community-files",
@@ -1935,9 +1935,9 @@
   "repository": {
     "branch": "main",
     "origin": "https://github.com/Anton-Sukhankin/rovna-ui.git",
-    "trackedFiles": 6480,
-    "trackedBytes": 38579535,
-    "workingTreeChanges": 0,
+    "trackedFiles": 6568,
+    "trackedBytes": 41515599,
+    "workingTreeChanges": 4,
     "stagedFiles": 0
   },
   "workflow": {
@@ -1953,7 +1953,7 @@
   "sourceSnapshot": {
     "status": "ready",
     "blockers": [],
-    "candidateFiles": 6480,
-    "totalBytes": 38579535
+    "candidateFiles": 6568,
+    "totalBytes": 41515599
   }
 }

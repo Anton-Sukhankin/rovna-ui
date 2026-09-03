@@ -21,7 +21,7 @@ Concurrency задана по Git ref с `cancel-in-progress: true`. Node зак
 - flakiness gate: initial failures `0`, new flakes `0`, unresolved `0`;
 - network policy: внешних runtime-запросов `0`, пять reference embeds заблокированы;
 - accessibility warning baseline: `219/219` story/rule entries, added/changed `0`;
-- CI contract validator: `17/17` checks.
+- CI contract validator: `18/18` checks.
 
 Vitest browser JSON перенесен в `tmp/q03-storybook-browser-tests.json`; runtime report остается в `tmp/q02-story-render-report.json`, поэтому отчеты больше не перезаписывают друг друга. Failure artifacts используют фактические пути scripts. Runtime trace создается только для retry после initial failure; новый восстановившийся flake все равно блокирует gate, если не добавлен в отдельно reviewed baseline.
 
