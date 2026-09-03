@@ -140,8 +140,8 @@ Remove-Item -LiteralPath ..\.cache\yarn-public -Recurse -Force
 Before deleting, the resolved paths must be checked and must stay inside the current project:
 
 ```text
-C:\Users\armad\OneDrive\Документы\Проект в разработке\DS Tend UI\app\node_modules
-C:\Users\armad\OneDrive\Документы\Проект в разработке\DS Tend UI\.cache\yarn-public
+<repository-root>\app\node_modules
+<repository-root>\.cache\yarn-public
 ```
 
 ## Result Classification

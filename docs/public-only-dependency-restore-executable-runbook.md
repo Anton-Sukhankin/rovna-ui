@@ -244,7 +244,7 @@ Remove-Item -LiteralPath (Resolve-Path ..\.cache\yarn-public).Path -Recurse -For
 Do not delete anything if the resolved path is outside:
 
 ```text
-C:\Users\armad\OneDrive\Документы\Проект в разработке\DS Tend UI
+<repository-root>
 ```
 
 ## Result Recording Template
