@@ -298,7 +298,7 @@
     "vite": "7.3.6",
     "vite-bundle-visualizer": "^1.2.1",
     "vitest": "4.1.10",
-    "webpack": "5.109.2",
+    "webpack": "5.110.2",
     "yarn-deduplicate": "^6.0.2"
   },
   "dependencies": {
