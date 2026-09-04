@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lockSha256": "ab39e4d2d30c7412eb8e3c323b13a03bd7cedcf03ae8820f16503978e412a864",
+  "lockSha256": "8b3e60c93ece2b935abd1f6f1f0df5f281be33aae71b762e89db16c93b6ea068",
   "projectLicense": {
     "status": "present",
     "rootLicensePresent": true,
@@ -8,14 +8,14 @@
     "manifestMetadataIsAuthorization": false
   },
   "summary": {
-    "packages": 1360,
+    "packages": 1357,
     "runtimePackages": 204,
-    "developmentPackages": 1156,
-    "validSpdx": 1314,
+    "developmentPackages": 1153,
+    "validSpdx": 1311,
     "missing": 0,
     "nonSpdxOrInvalid": 0,
     "ownerUnconfirmedMetadata": 46,
-    "installedLifecyclePackages": 4
+    "installedLifecyclePackages": 3
   },
   "packages": [
     {
@@ -1666,8 +1666,17 @@
       "lifecycleScripts": []
     },
     {
+      "name": "@img/colour",
+      "version": "1.1.0",
+      "dependencyClass": "development",
+      "releaseRole": "third-party",
+      "declaredLicense": "MIT",
+      "licenseStatus": "valid-spdx",
+      "lifecycleScripts": []
+    },
+    {
       "name": "@img/sharp-win32-x64",
-      "version": "0.34.3",
+      "version": "0.35.4",
       "dependencyClass": "development",
       "releaseRole": "third-party",
       "declaredLicense": "Apache-2.0 AND LGPL-3.0-or-later",
@@ -4663,15 +4672,6 @@
       "lifecycleScripts": []
     },
     {
-      "name": "color",
-      "version": "4.2.3",
-      "dependencyClass": "development",
-      "releaseRole": "third-party",
-      "declaredLicense": "MIT",
-      "licenseStatus": "valid-spdx",
-      "lifecycleScripts": []
-    },
-    {
       "name": "color-convert",
       "version": "2.0.1",
       "dependencyClass": "development",
@@ -4683,15 +4683,6 @@
     {
       "name": "color-name",
       "version": "1.1.4",
-      "dependencyClass": "development",
-      "releaseRole": "third-party",
-      "declaredLicense": "MIT",
-      "licenseStatus": "valid-spdx",
-      "lifecycleScripts": []
-    },
-    {
-      "name": "color-string",
-      "version": "1.9.1",
       "dependencyClass": "development",
       "releaseRole": "third-party",
       "declaredLicense": "MIT",
@@ -5339,7 +5330,7 @@
     },
     {
       "name": "detect-libc",
-      "version": "2.0.4",
+      "version": "2.1.2",
       "dependencyClass": "development",
       "releaseRole": "third-party",
       "declaredLicense": "Apache-2.0",
@@ -6863,15 +6854,6 @@
     {
       "name": "is-arrayish",
       "version": "0.2.1",
-      "dependencyClass": "development",
-      "releaseRole": "third-party",
-      "declaredLicense": "MIT",
-      "licenseStatus": "valid-spdx",
-      "lifecycleScripts": []
-    },
-    {
-      "name": "is-arrayish",
-      "version": "0.3.2",
       "dependencyClass": "development",
       "releaseRole": "third-party",
       "declaredLicense": "MIT",
@@ -10662,14 +10644,12 @@
     },
     {
       "name": "sharp",
-      "version": "0.34.3",
+      "version": "0.35.4",
       "dependencyClass": "development",
       "releaseRole": "third-party",
       "declaredLicense": "Apache-2.0",
       "licenseStatus": "valid-spdx",
-      "lifecycleScripts": [
-        "install"
-      ]
+      "lifecycleScripts": []
     },
     {
       "name": "shebang-command",
@@ -10767,15 +10747,6 @@
       "dependencyClass": "development",
       "releaseRole": "third-party",
       "declaredLicense": "ISC",
-      "licenseStatus": "valid-spdx",
-      "lifecycleScripts": []
-    },
-    {
-      "name": "simple-swizzle",
-      "version": "0.2.2",
-      "dependencyClass": "development",
-      "releaseRole": "third-party",
-      "declaredLicense": "MIT",
       "licenseStatus": "valid-spdx",
       "lifecycleScripts": []
     },

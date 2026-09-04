@@ -1,15 +1,15 @@
 {
   "schemaVersion": 2,
   "status": "passed",
-  "generatedAt": "2026-09-01T22:27:10.188Z",
+  "generatedAt": "2026-09-04T05:56:00.004Z",
   "stepsPlanned": 51,
   "stepsCompleted": 51,
   "passed": 51,
   "failed": 0,
   "failedStep": null,
-  "durationMs": 4768,
-  "resumedFrom": "r10-github-readiness",
-  "reusedSteps": 50,
+  "durationMs": 74634,
+  "resumedFrom": "ds-only-aggregate",
+  "reusedSteps": 44,
   "results": [
     {
       "order": 1,
@@ -454,7 +454,7 @@
       "exitCode": 0,
       "signal": null,
       "error": null,
-      "durationMs": 76,
+      "durationMs": 73,
       "reusedFromPreviousRun": true
     },
     {
@@ -465,7 +465,7 @@
       "exitCode": 0,
       "signal": null,
       "error": null,
-      "durationMs": 4600,
+      "durationMs": 3013,
       "reusedFromPreviousRun": true
     },
     {
@@ -476,7 +476,7 @@
       "exitCode": 0,
       "signal": null,
       "error": null,
-      "durationMs": 16480,
+      "durationMs": 3063,
       "reusedFromPreviousRun": true
     },
     {
@@ -487,7 +487,7 @@
       "exitCode": 0,
       "signal": null,
       "error": null,
-      "durationMs": 51,
+      "durationMs": 53,
       "reusedFromPreviousRun": true
     },
     {
@@ -498,7 +498,7 @@
       "exitCode": 0,
       "signal": null,
       "error": null,
-      "durationMs": 7827,
+      "durationMs": 6242,
       "reusedFromPreviousRun": true
     },
     {
@@ -509,8 +509,7 @@
       "exitCode": 0,
       "signal": null,
       "error": null,
-      "durationMs": 25646,
-      "reusedFromPreviousRun": true
+      "durationMs": 64844
     },
     {
       "order": 46,
@@ -520,8 +519,7 @@
       "exitCode": 0,
       "signal": null,
       "error": null,
-      "durationMs": 3405,
-      "reusedFromPreviousRun": true
+      "durationMs": 2902
     },
     {
       "order": 47,
@@ -531,8 +529,7 @@
       "exitCode": 0,
       "signal": null,
       "error": null,
-      "durationMs": 206,
-      "reusedFromPreviousRun": true
+      "durationMs": 195
     },
     {
       "order": 48,
@@ -542,8 +539,7 @@
       "exitCode": 0,
       "signal": null,
       "error": null,
-      "durationMs": 163,
-      "reusedFromPreviousRun": true
+      "durationMs": 155
     },
     {
       "order": 49,
@@ -553,8 +549,7 @@
       "exitCode": 0,
       "signal": null,
       "error": null,
-      "durationMs": 1557,
-      "reusedFromPreviousRun": true
+      "durationMs": 1367
     },
     {
       "order": 50,
@@ -564,8 +559,7 @@
       "exitCode": 0,
       "signal": null,
       "error": null,
-      "durationMs": 1046,
-      "reusedFromPreviousRun": true
+      "durationMs": 1036
     },
     {
       "order": 51,
@@ -575,7 +569,7 @@
       "exitCode": 0,
       "signal": null,
       "error": null,
-      "durationMs": 4764
+      "durationMs": 4131
     }
   ],
   "publicationPerformed": false

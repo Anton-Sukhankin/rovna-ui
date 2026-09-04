@@ -87,7 +87,7 @@ npm.cmd run security:r08:compensations
 npm.cmd run quality:r08
 ```
 
-`security:r08:audit` обновляет audit evidence через публичный npm. `quality:r08` проверяет уже сохраненный audit offline, сверяет hash lockfile и не обращается к registry.
+`security:r08:audit` строит production/full closure по фактическому `yarn.lock` и обновляет audit evidence через публичный npm bulk advisory API с retry. `quality:r08` проверяет уже сохраненный audit offline, сверяет hash lockfile и не обращается к registry. Устаревший Yarn 1 audit endpoint не используется.
 
 ## Доказательства
 

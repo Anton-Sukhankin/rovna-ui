@@ -36,7 +36,7 @@ function renderMarkdown(report) {
 
 **${report.status}**. Все ${report.execution.passed}/${report.execution.planned} шагов R-11 прошли, blocking failures: \`${report.blockingFailures.length}\`.
 
-Проект готов к локальной работе со Storybook и к registry-free подключению через release tarballs. npm publication, создание GitHub remote и push не выполнялись.
+Проект готов к локальной работе со Storybook и к registry-free подключению через release tarballs. GitHub remote настроен; npm publication не выполнялась.
 
 ## Итоговые показатели
 
@@ -272,7 +272,7 @@ function main() {
       experimentalSourceOnlyPackages: 7,
       declaredReactPeer: react.declaredPeerContract,
       rootLicensePresent: true,
-      gitOriginConfigured: false,
+      gitOriginConfigured: Boolean(baseline.git.origin),
       corporateSourcesUsed: false,
     },
     checks,

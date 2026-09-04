@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "status": "passed-with-owner-actions",
-  "evidenceAt": "2026-09-01T20:28:03.903Z",
+  "evidenceAt": "2026-09-04T05:53:41.645Z",
   "blockingFailures": [],
   "execution": {
     "planned": 51,
@@ -10,10 +10,10 @@
   },
   "baseline": {
     "storybookIndexSha256": "60e4e597f5c02cc49963afc181467adff3dffab34980429caf2cdab33bce5957",
-    "storybookTreeSha256": "3e21c68c305f4c2a1d2b99164ebbc2910028d37554daaadc0fa25a2f591deead",
-    "packageArtifactsSha256": "a0c9373821b3cf8a22422a30ffb1d4f087858dcc9e43b77ce95005fde2a9605f",
-    "releaseArchiveSha256": "c502f0b1498ad80def9f011a0acee37844cee0a3c3b48488e2f1ae68fe6fa2a0",
-    "yarnLockSha256": "62f73cbe5f2ec6043d58f44a2b25124bea9d3ea4c01da7063ac85210870ed2e8"
+    "storybookTreeSha256": "d4bd557c54e1e76b52c579484dc1894901c53f9b3ca23f56bce49a484069e8b1",
+    "packageArtifactsSha256": "80b3d5756b732478e129a70665ba9e92c6958d126fdf69ac4ccabdc61dd5f87b",
+    "releaseArchiveSha256": "349df51530a5a6cbb2653d73a5fc063496cdbaabdbfe12a4f5b1ff33b90ca9b7",
+    "yarnLockSha256": "8b3e60c93ece2b935abd1f6f1f0df5f281be33aae71b762e89db16c93b6ea068"
   },
   "storybook": {
     "entries": 1238,
@@ -65,7 +65,7 @@
   "security": {
     "advisories": 0,
     "sbomComponents": 204,
-    "licenseRecords": 1360,
+    "licenseRecords": 1357,
     "forbiddenFindings": 0
   },
   "documentation": {
@@ -95,7 +95,7 @@
     "experimentalSourceOnlyPackages": 7,
     "declaredReactPeer": "React and ReactDOM ^17.0.2",
     "rootLicensePresent": true,
-    "gitOriginConfigured": false,
+    "gitOriginConfigured": true,
     "corporateSourcesUsed": false
   },
   "checks": [
@@ -240,8 +240,8 @@
     {
       "id": "release-archive-hash",
       "status": "passed",
-      "actual": "c502f0b1498ad80def9f011a0acee37844cee0a3c3b48488e2f1ae68fe6fa2a0",
-      "expected": "c502f0b1498ad80def9f011a0acee37844cee0a3c3b48488e2f1ae68fe6fa2a0"
+      "actual": "349df51530a5a6cbb2653d73a5fc063496cdbaabdbfe12a4f5b1ff33b90ca9b7",
+      "expected": "349df51530a5a6cbb2653d73a5fc063496cdbaabdbfe12a4f5b1ff33b90ca9b7"
     }
   ]
 }

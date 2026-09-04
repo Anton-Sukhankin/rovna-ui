@@ -1,12 +1,12 @@
 # R-11. Финальная полная приемка
 
-Дата доказательств: 2026-09-01T20:28:03.903Z
+Дата доказательств: 2026-09-04T05:53:41.645Z
 
 ## Решение
 
 **passed-with-owner-actions**. Все 51/51 шагов R-11 прошли, blocking failures: `0`.
 
-Проект готов к локальной работе со Storybook и к registry-free подключению через release tarballs. npm publication, создание GitHub remote и push не выполнялись.
+Проект готов к локальной работе со Storybook и к registry-free подключению через release tarballs. GitHub remote настроен; npm publication не выполнялась.
 
 ## Итоговые показатели
 
@@ -29,10 +29,10 @@
 ## Baseline
 
 - Storybook index SHA-256: `60e4e597f5c02cc49963afc181467adff3dffab34980429caf2cdab33bce5957`.
-- Storybook tree SHA-256: `3e21c68c305f4c2a1d2b99164ebbc2910028d37554daaadc0fa25a2f591deead`.
-- Package artifacts SHA-256: `a0c9373821b3cf8a22422a30ffb1d4f087858dcc9e43b77ce95005fde2a9605f`.
-- Release bundle SHA-256: `c502f0b1498ad80def9f011a0acee37844cee0a3c3b48488e2f1ae68fe6fa2a0`.
-- Yarn lock SHA-256: `62f73cbe5f2ec6043d58f44a2b25124bea9d3ea4c01da7063ac85210870ed2e8`.
+- Storybook tree SHA-256: `d4bd557c54e1e76b52c579484dc1894901c53f9b3ca23f56bce49a484069e8b1`.
+- Package artifacts SHA-256: `80b3d5756b732478e129a70665ba9e92c6958d126fdf69ac4ccabdc61dd5f87b`.
+- Release bundle SHA-256: `349df51530a5a6cbb2653d73a5fc063496cdbaabdbfe12a4f5b1ff33b90ca9b7`.
+- Yarn lock SHA-256: `8b3e60c93ece2b935abd1f6f1f0df5f281be33aae71b762e89db16c93b6ea068`.
 
 ## Принятые действия владельца и среды
 

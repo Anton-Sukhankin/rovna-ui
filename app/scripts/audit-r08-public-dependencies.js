@@ -1,13 +1,16 @@
 const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
-const { spawnSync } = require('child_process');
+const semver = require('semver');
+const yarnLockfile = require('@yarnpkg/lockfile');
 
 const appRoot = path.resolve(__dirname, '..');
 const repoRoot = path.resolve(appRoot, '..');
+const packagesRoot = path.join(appRoot, 'packages');
 const lockPath = path.join(appRoot, 'yarn.lock');
 const reportPath = path.join(repoRoot, 'docs', 'dependency-audit.json');
 const registry = 'https://registry.npmjs.org';
+const auditEndpoint = `${registry}/-/npm/v1/security/advisories/bulk`;
 const verifyOnly = process.argv.includes('--verify');
 
 function readJson(filePath) {
@@ -22,41 +25,171 @@ function severityRank(severity) {
   return { critical: 4, high: 3, moderate: 2, low: 1, info: 0 }[severity] || 0;
 }
 
-function runAudit(groups) {
-  const args = ['yarn', 'audit', '--level', 'low', '--json', '--registry', registry];
-  if (groups) args.push('--groups', groups);
-  const executable = process.platform === 'win32' ? process.env.ComSpec || 'cmd.exe' : 'corepack';
-  const executableArgs = process.platform === 'win32'
-    ? ['/d', '/s', '/c', ['corepack', ...args].join(' ')]
-    : args;
-  const result = spawnSync(executable, executableArgs, {
-    cwd: appRoot,
-    encoding: 'utf8',
-    maxBuffer: 100 * 1024 * 1024,
-  });
-  if (result.error) throw result.error;
+function packageNameFromSelector(selector) {
+  return selector.match(/^(@[^/]+\/[^@]+|[^@]+)@/)?.[1] || null;
+}
 
-  const advisories = new Map();
-  let summary = null;
-  for (const line of `${result.stdout || ''}\n${result.stderr || ''}`.split(/\r?\n/)) {
-    if (!line.trim().startsWith('{')) continue;
-    let event;
+function readWorkspaceManifests() {
+  const manifests = new Map();
+  for (const directory of fs.readdirSync(packagesRoot, { withFileTypes: true })) {
+    if (!directory.isDirectory()) continue;
+    const manifestPath = path.join(packagesRoot, directory.name, 'package.json');
+    if (!fs.existsSync(manifestPath)) continue;
+    const manifest = readJson(manifestPath);
+    if (manifest.name) manifests.set(manifest.name, manifest);
+  }
+  return manifests;
+}
+
+function buildLockIndex() {
+  const parsed = yarnLockfile.parse(fs.readFileSync(lockPath, 'utf8'));
+  if (parsed.type !== 'success') throw new Error(`Cannot parse yarn.lock: ${parsed.type}`);
+  const selectors = new Map();
+  const recordsByName = new Map();
+
+  for (const [combinedSelectors, entry] of Object.entries(parsed.object)) {
+    const selectorList = combinedSelectors.split(/,\s+/);
+    const name = packageNameFromSelector(selectorList[0]);
+    if (!name || !entry.version) continue;
+    const record = {
+      name,
+      version: entry.version,
+      resolved: entry.resolved || null,
+      dependencies: entry.dependencies || {},
+      optionalDependencies: entry.optionalDependencies || {},
+    };
+    selectorList.forEach(selector => selectors.set(selector, record));
+    const records = recordsByName.get(name) || [];
+    if (!records.some(candidate => candidate.version === record.version)) records.push(record);
+    recordsByName.set(name, records);
+  }
+
+  return { selectors, recordsByName };
+}
+
+function resolveLockRecord(index, name, range) {
+  const exact = index.selectors.get(`${name}@${range}`);
+  if (exact) return exact;
+  const candidates = index.recordsByName.get(name) || [];
+  const matching = candidates.filter(candidate => {
     try {
-      event = JSON.parse(line);
+      return semver.satisfies(candidate.version, range, { includePrerelease: true });
     } catch {
+      return false;
+    }
+  });
+  if (matching.length === 1) return matching[0];
+  throw new Error(`Cannot resolve audited lock entry: ${name}@${range}`);
+}
+
+function collectAuditPayload(includeDev) {
+  const rootManifest = readJson(path.join(appRoot, 'package.json'));
+  const workspaceManifests = readWorkspaceManifests();
+  const lockIndex = buildLockIndex();
+  const queue = [];
+  const visitedWorkspaces = new Set();
+  const visitedRecords = new Map();
+  const addDependencies = manifest => {
+    const fields = includeDev
+      ? ['dependencies', 'optionalDependencies', 'devDependencies']
+      : ['dependencies', 'optionalDependencies'];
+    fields.forEach(field => {
+      Object.entries(manifest[field] || {}).forEach(([name, range]) => queue.push({ name, range }));
+    });
+  };
+
+  addDependencies(rootManifest);
+  workspaceManifests.forEach((manifest, name) => queue.push({ name, range: manifest.version }));
+
+  while (queue.length > 0) {
+    const { name, range } = queue.shift();
+    const workspace = workspaceManifests.get(name);
+    if (workspace) {
+      if (!visitedWorkspaces.has(name)) {
+        visitedWorkspaces.add(name);
+        addDependencies(workspace);
+      }
       continue;
     }
-    if (event.type === 'auditSummary') summary = event.data;
-    if (event.type !== 'auditAdvisory') continue;
-    const advisory = event.data.advisory;
-    if (!advisories.has(advisory.id)) {
+
+    const record = resolveLockRecord(lockIndex, name, range);
+    const identity = `${record.name}@${record.version}`;
+    if (visitedRecords.has(identity)) continue;
+    visitedRecords.set(identity, record);
+    Object.entries(record.dependencies).forEach(([dependency, dependencyRange]) => {
+      queue.push({ name: dependency, range: dependencyRange });
+    });
+    Object.entries(record.optionalDependencies).forEach(([dependency, dependencyRange]) => {
+      queue.push({ name: dependency, range: dependencyRange });
+    });
+  }
+
+  const payload = {};
+  for (const record of visitedRecords.values()) {
+    if (!record.resolved?.startsWith(`${registry}/`)) continue;
+    payload[record.name] = payload[record.name] || [];
+    if (!payload[record.name].includes(record.version)) payload[record.name].push(record.version);
+  }
+  Object.values(payload).forEach(versions => versions.sort(semver.compare));
+
+  return {
+    payload,
+    dependencies: Object.values(payload).reduce((total, versions) => total + versions.length, 0),
+  };
+}
+
+async function requestBulkAdvisories(payload) {
+  let lastError;
+  for (let attempt = 1; attempt <= 3; attempt += 1) {
+    try {
+      const response = await fetch(auditEndpoint, {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+          'user-agent': 'rovna-ui-security-audit/1',
+        },
+        body: JSON.stringify(payload),
+        signal: AbortSignal.timeout(240000),
+      });
+      if (!response.ok) {
+        const body = (await response.text()).slice(0, 500);
+        throw new Error(`npm bulk audit HTTP ${response.status}: ${body}`);
+      }
+      const result = await response.json();
+      if (!result || typeof result !== 'object' || Array.isArray(result)) {
+        throw new Error('npm bulk audit returned an invalid response');
+      }
+      return { result, attempts: attempt };
+    } catch (error) {
+      lastError = error;
+      if (attempt < 3) {
+        await new Promise(resolve => setTimeout(resolve, attempt * 2000));
+      }
+    }
+  }
+  throw new Error(`Public npm bulk audit failed after 3 attempts: ${lastError?.message || lastError}`);
+}
+
+async function runAudit(groups) {
+  const { payload, dependencies } = collectAuditPayload(groups !== 'dependencies');
+  const { result, attempts } = await requestBulkAdvisories(payload);
+
+  const advisories = new Map();
+  for (const [name, packageAdvisories] of Object.entries(result)) {
+    const versions = payload[name] || [];
+    for (const advisory of packageAdvisories) {
+      const affectedVersions = versions.filter(version =>
+        semver.satisfies(version, advisory.vulnerable_versions, { includePrerelease: true }),
+      );
+      if (affectedVersions.length === 0 || advisories.has(advisory.id)) continue;
       advisories.set(advisory.id, {
         id: advisory.id,
         severity: advisory.severity,
-        module: advisory.module_name,
+        module: name,
         title: advisory.title,
         vulnerableVersions: advisory.vulnerable_versions,
-        patchedVersions: advisory.patched_versions,
+        affectedVersions,
+        patchedVersions: null,
         url: advisory.url,
       });
     }
@@ -70,16 +203,16 @@ function runAudit(groups) {
   );
   const severities = { info: 0, low: 0, moderate: 0, high: 0, critical: 0 };
   for (const row of rows) severities[row.severity] += 1;
-  if (!summary && result.status !== 0 && rows.length === 0) {
-    throw new Error(`Public npm audit failed without a parseable result (exit ${result.status})`);
-  }
   return {
     status: rows.length === 0 ? 'passed' : 'failed',
     groups: groups || 'all',
-    auditExitCode: result.status,
+    auditExitCode: rows.length === 0 ? 0 : 1,
+    provider: 'npm-bulk-advisory-api',
+    endpoint: auditEndpoint,
+    requestAttempts: attempts,
     uniqueAdvisories: rows.length,
     severities,
-    dependencies: summary?.totalDependencies ?? null,
+    dependencies,
     advisories: rows,
   };
 }
@@ -101,7 +234,7 @@ function verify() {
   if (errors.length) throw new Error(errors.join('; '));
 }
 
-function refresh() {
+async function refresh() {
   const report = {
     schemaVersion: 1,
     status: 'passed',
@@ -110,8 +243,8 @@ function refresh() {
     sourcePolicy: 'public-npm-only',
     lockSha256: sha256(lockPath),
     lifecycleScriptsExecuted: false,
-    production: runAudit('dependencies'),
-    full: runAudit(null),
+    production: await runAudit('dependencies'),
+    full: await runAudit(null),
   };
   report.status =
     report.production.status === 'passed' && report.full.status === 'passed'
@@ -125,10 +258,12 @@ function refresh() {
   if (report.status !== 'passed') process.exitCode = 1;
 }
 
-try {
+async function main() {
   if (verifyOnly) verify();
-  else refresh();
-} catch (error) {
+  else await refresh();
+}
+
+main().catch(error => {
   console.error(error instanceof Error ? error.stack : String(error));
   process.exitCode = 1;
-}
+});

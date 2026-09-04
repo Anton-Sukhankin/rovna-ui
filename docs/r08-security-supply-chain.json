@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "status": "passed",
-  "lockSha256": "ab39e4d2d30c7412eb8e3c323b13a03bd7cedcf03ae8820f16503978e412a864",
+  "lockSha256": "8b3e60c93ece2b935abd1f6f1f0df5f281be33aae71b762e89db16c93b6ea068",
   "releaseBoundary": {
     "expectedPackages": 21,
     "representedPackages": 21
@@ -11,21 +11,21 @@
     "components": 204,
     "dependencyEdges": 684,
     "missingDependencies": [],
-    "deterministicSerialNumber": "urn:uuid:ab39e4d2-d30c-5412-ab8e-3c323b13a03b"
+    "deterministicSerialNumber": "urn:uuid:8b3e60c9-3ece-5b93-9abd-1f6f1f0df5f2"
   },
   "licenses": {
-    "packages": 1360,
+    "packages": 1357,
     "runtimePackages": 204,
-    "developmentPackages": 1156,
-    "validSpdx": 1314,
+    "developmentPackages": 1153,
+    "validSpdx": 1311,
     "missing": 0,
     "nonSpdxOrInvalid": 0,
     "ownerUnconfirmedMetadata": 46,
-    "installedLifecyclePackages": 4
+    "installedLifecyclePackages": 3
   },
   "lockfile": {
     "entries": 1929,
-    "lockSha256": "ab39e4d2d30c7412eb8e3c323b13a03bd7cedcf03ae8820f16503978e412a864",
+    "lockSha256": "8b3e60c93ece2b935abd1f6f1f0df5f281be33aae71b762e89db16c93b6ea068",
     "registryHosts": {
       "registry.npmjs.org": 1929
     },
@@ -46,7 +46,7 @@
     "unexpectedBinaryArtifacts": [],
     "suspiciousCredentialFiles": [],
     "activeAbsolutePaths": [],
-    "referenceAbsolutePathFiles": 11,
+    "referenceAbsolutePathFiles": 9,
     "sourceLifecycleScripts": []
   },
   "installPolicy": {

@@ -1,15 +1,18 @@
 {
   "schemaVersion": 1,
   "status": "passed",
-  "checkedAt": "2026-09-03T13:14:17.454Z",
+  "checkedAt": "2026-09-04T05:19:19.260Z",
   "registry": "https://registry.npmjs.org",
   "sourcePolicy": "public-npm-only",
-  "lockSha256": "ab39e4d2d30c7412eb8e3c323b13a03bd7cedcf03ae8820f16503978e412a864",
+  "lockSha256": "8b3e60c93ece2b935abd1f6f1f0df5f281be33aae71b762e89db16c93b6ea068",
   "lifecycleScriptsExecuted": false,
   "production": {
     "status": "passed",
     "groups": "dependencies",
     "auditExitCode": 0,
+    "provider": "npm-bulk-advisory-api",
+    "endpoint": "https://registry.npmjs.org/-/npm/v1/security/advisories/bulk",
+    "requestAttempts": 1,
     "uniqueAdvisories": 0,
     "severities": {
       "info": 0,
@@ -18,13 +21,16 @@
       "high": 0,
       "critical": 0
     },
-    "dependencies": 276,
+    "dependencies": 205,
     "advisories": []
   },
   "full": {
     "status": "passed",
     "groups": "all",
     "auditExitCode": 0,
+    "provider": "npm-bulk-advisory-api",
+    "endpoint": "https://registry.npmjs.org/-/npm/v1/security/advisories/bulk",
+    "requestAttempts": 1,
     "uniqueAdvisories": 0,
     "severities": {
       "info": 0,
@@ -33,7 +39,7 @@
       "high": 0,
       "critical": 0
     },
-    "dependencies": 1586,
+    "dependencies": 1463,
     "advisories": []
   }
 }

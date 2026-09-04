@@ -1,7 +1,7 @@
 {
   "status": "passed-with-accepted-risks",
   "mode": "ds-only-with-q-gates",
-  "checkedAt": "2026-09-01T22:25:53.550Z",
+  "checkedAt": "2026-09-04T05:55:50.202Z",
   "networkInstallAllowed": false,
   "externalConsumerUsed": false,
   "checks": [
@@ -186,7 +186,7 @@
                 "--preview-only",
                 "--smoke-test"
               ],
-              "durationMs": 5952,
+              "durationMs": 33547,
               "status": 0,
               "signal": null,
               "error": null
@@ -205,13 +205,13 @@
                 "storybook-f06",
                 "--smoke-test"
               ],
-              "durationMs": 6564,
+              "durationMs": 6726,
               "status": 0,
               "signal": null,
               "error": null
             }
           ],
-          "durationMs": 13005
+          "durationMs": 42598
         },
         "outputTail": "┌  storybook v10.5.7\n│\n◇  Smoke tests passed, exiting.\n│\n└  \n\n\n┌  storybook v10.5.7\n│\n●  Starting...\n│\n◇  Smoke tests passed, exiting.\n│\n└  \n\nG-03 Storybook launcher: passed\nPath strategy: temporary-subst-drive (T:)\nDrive released: yes\nReport: C:\\Users\\armad\\OneDrive\\Документы\\Проект в разработке\\DS Tend UI\\tmp\\g03-storybook-launcher.json"
       }
@@ -228,11 +228,11 @@
     },
     {
       "id": "git-baseline",
-      "status": "warning",
+      "status": "passed",
       "blocking": false,
       "details": {
-        "initialCommit": false,
-        "originConfigured": false
+        "initialCommit": true,
+        "originConfigured": true
       }
     },
     {
@@ -272,7 +272,7 @@
         "consumerInstall": "passed with yarn --offline",
         "consumerBuild": "passed without source aliases",
         "consumerDomSmoke": "passed",
-        "archiveSha256": "c502f0b1498ad80def9f011a0acee37844cee0a3c3b48488e2f1ae68fe6fa2a0",
+        "archiveSha256": "349df51530a5a6cbb2653d73a5fc063496cdbaabdbfe12a4f5b1ff33b90ca9b7",
         "archiveChecksumMatches": true
       }
     },
@@ -387,7 +387,7 @@
       "status": "passed",
       "blocking": true,
       "details": {
-        "ciChecks": 16,
+        "ciChecks": 19,
         "ciFailedChecks": [],
         "remoteExecution": "pending-first-GitHub-run",
         "reactRows": [
@@ -431,7 +431,7 @@
       "status": "accepted-risk",
       "blocking": false,
       "details": {
-        "originConfigured": false,
+        "originConfigured": true,
         "remoteRun": "pending-first-GitHub-run"
       }
     },
@@ -447,8 +447,8 @@
     }
   ],
   "summary": {
-    "passed": 24,
-    "warnings": 1,
+    "passed": 25,
+    "warnings": 0,
     "acceptedRisks": [
       "owner-publication-gates",
       "q-documented-backlog",
@@ -457,5 +457,5 @@
     ],
     "blockingFailures": []
   },
-  "durationMs": 25588
+  "durationMs": 64765
 }

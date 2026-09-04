@@ -1,11 +1,11 @@
 {
   "status": "passed",
-  "generatedAt": "2026-09-03T13:14:27.592Z",
+  "generatedAt": "2026-09-04T05:31:31.249Z",
   "checks": 20,
   "passed": 20,
   "acceptedRisks": 0,
   "failed": 0,
-  "lockSha256": "ab39e4d2d30c7412eb8e3c323b13a03bd7cedcf03ae8820f16503978e412a864",
+  "lockSha256": "8b3e60c93ece2b935abd1f6f1f0df5f281be33aae71b762e89db16c93b6ea068",
   "assertions": [
     {
       "id": "secret-scan",
@@ -58,8 +58,8 @@
     {
       "id": "audit-lock-freshness",
       "status": "passed",
-      "actual": "ab39e4d2d30c7412eb8e3c323b13a03bd7cedcf03ae8820f16503978e412a864",
-      "expected": "ab39e4d2d30c7412eb8e3c323b13a03bd7cedcf03ae8820f16503978e412a864"
+      "actual": "8b3e60c93ece2b935abd1f6f1f0df5f281be33aae71b762e89db16c93b6ea068",
+      "expected": "8b3e60c93ece2b935abd1f6f1f0df5f281be33aae71b762e89db16c93b6ea068"
     },
     {
       "id": "lock-source-policy",
@@ -93,14 +93,14 @@
       "id": "license-inventory",
       "status": "passed",
       "actual": {
-        "packages": 1360,
+        "packages": 1357,
         "runtimePackages": 204,
-        "developmentPackages": 1156,
-        "validSpdx": 1314,
+        "developmentPackages": 1153,
+        "validSpdx": 1311,
         "missing": 0,
         "nonSpdxOrInvalid": 0,
         "ownerUnconfirmedMetadata": 46,
-        "installedLifecyclePackages": 4
+        "installedLifecyclePackages": 3
       },
       "expected": "complete inventory tied to lock hash"
     },
